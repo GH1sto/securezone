@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Información Básica - BankCloud</title>
+    <link rel="icon" href="bankcloudtinylogo.ico" type="image/x-icon">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+
+    <style>
+        /* --- Variables CSS --- */
+        :root {
+            --primary-blue: #0056b3; --dark-blue: #003366; --light-blue: #e6f0ff;
+            --accent-blue: #007bff; --white: #ffffff; --grey-light: #f8f9fa;
+            --grey-medium: #e9ecef; --grey-dark: #6c757d; --text-color: #333;
+            --text-light: #555; --footer-text: #adb5bd; --font-family: 'Poppins', sans-serif;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); --border-radius: 8px;
+            --header-height: 70px;
+        }
+        /* --- Estilos Base --- */
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); overflow-x: hidden; }
+        body { font-family: var(--font-family); margin: 0; padding: 0; background-color: var(--grey-light); color: var(--text-color); line-height: 1.6; padding-top: var(--header-height); }
+        .main-container { max-width: 900px; margin: 2rem auto; padding: 2rem; background-color: var(--white); border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+        h1, h2 { color: var(--dark-blue); margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: 1.8rem; text-align: center; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.4rem; color: var(--primary-blue); border-bottom: 1px solid var(--grey-medium); padding-bottom: 0.5rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.1rem; color: var(--dark-blue); margin-bottom: 1rem; margin-top: 1.5rem; font-weight: 600;}
+        h4 { font-size: 1.2rem; color: var(--white); margin-bottom: 1rem; font-weight: 600; } /* Footer heading */
+        p.form-subtitle { text-align: center; color: var(--text-light); margin-bottom: 2rem; margin-top: -0.5rem; }
+
+        /* --- Estilos de Formulario --- */
+        form { width: 100%; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; font-size: 0.9rem; font-weight: 500; color: var(--text-light); margin-bottom: 0.4rem; }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--grey-medium); border-radius: var(--border-radius); background-color: var(--grey-light); font-size: 1rem; color: var(--text-color); transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; box-sizing: border-box; }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--primary-blue); background-color: var(--white); box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2); }
+        .form-textarea { min-height: 80px; resize: vertical; }
+        .form-checkbox-label, .form-radio-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: var(--text-light); margin-bottom: 0.5rem; }
+        .form-checkbox, .form-radio { height: 1.1em; width: 1.1em; cursor: pointer; accent-color: var(--primary-blue); }
+        .form-checkbox-group, .form-radio-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
+        .form-note { font-size: 0.85rem; color: var(--grey-dark); margin-top: 0.25rem; }
+        .submit-button { display: inline-block; background-color: var(--primary-blue); color: var(--white); padding: 0.8rem 2rem; border: none; border-radius: var(--border-radius); font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        .submit-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .button-container { text-align: center; margin-top: 2.5rem; }
+        .conditional-field { display: none; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out, padding-top 0.4s ease-out; opacity: 0; }
+        .conditional-field.visible { display: block; max-height: 500px; opacity: 1; margin-top: 0.5rem; padding-top: 0.5rem; }
+
+        /* --- Navbar Styles --- */
+        header { background-color: var(--white); padding: 0.5rem 0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); min-height: var(--header-height); display: flex; align-items: center; }
+        header .container { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1140px; margin: auto; }
+        .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        header nav#main-nav { margin-left: auto; margin-right: 20px; }
+        #nav-links-container ul { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+        #nav-links-container ul li { margin-left: 18px; }
+        #nav-links-container ul li a { color: var(--grey-dark); font-weight: 400; padding: 5px 0; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; position: relative; display: block; white-space: nowrap; font-size: 0.95rem; text-decoration: none; }
+        #nav-links-container ul li a:hover, #nav-links-container ul li a.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+        .login-button-mobile-li { display: none; }
+        .login-button { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; white-space: nowrap; flex-shrink: 0; text-decoration: none; }
+        .login-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--dark-blue); cursor: pointer; padding: 5px; z-index: 1010; transition: color 0.3s ease; margin-left: 15px; }
+        .menu-toggle:hover { color: var(--primary-blue); }
+        .menu-toggle i { display: inline-block; }
+        .menu-toggle .fa-times { display: none; }
+
+        /* --- Footer Styles --- */
+        footer { background-color: var(--dark-blue); color: var(--footer-text); padding: 50px 0 30px; margin-top: 3rem; /* Added margin top */ }
+        footer .container { max-width: 1140px; margin: auto; padding: 0 15px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; width: 100%; align-items: start; text-align: left; }
+        .footer-info, .footer-contact, .footer-social { display: flex; flex-direction: column; gap: 15px; }
+        .footer-info #footer-logo { height: 35px; width: auto; opacity: 0.9; margin-bottom: 10px; }
+        .footer-slogan { font-size: 1rem; font-style: italic; margin: 0; line-height: 1.5; }
+        .footer-contact h4, .footer-social h4 { margin-bottom: 10px; text-align: left; color: var(--white); }
+        .footer-contact p { margin: 5px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .footer-contact p i { color: var(--accent-blue); width: 16px; text-align: center; }
+        .footer-social { align-items: flex-start; }
+        .social-links { display: flex; gap: 15px; margin-bottom: 15px; }
+        .social-links a { color: var(--white); font-size: 1.4rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { color: var(--accent-blue); transform: scale(1.1); }
+        .footer-button { display: inline-block; background-color: var(--accent-blue); color: var(--white); padding: 10px 25px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; align-self: flex-start; }
+        .footer-button:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+        .footer-bottom { margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--grey-dark); width: 100%; text-align: center; }
+        .footer-bottom p { margin: 0; font-size: 0.9rem; color: var(--footer-text); }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            header nav#main-nav ul { display: none; }
+            #nav-links-container.active ul { display: flex; }
+            .login-button.desktop-only { display: none; }
+            .menu-toggle { display: block; order: 3; }
+            header nav#main-nav { margin-right: 0; }
+            #nav-links-container { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); z-index: 999; height: 0; opacity: 0; overflow: hidden; visibility: hidden; transition: height 0.4s ease-out, opacity 0.3s ease-in-out 0.1s, visibility 0s linear 0.4s, padding 0.4s ease-out; }
+            #nav-links-container.active { height: auto; max-height: calc(100vh - 70px - 1rem); opacity: 1; visibility: visible; overflow-y: auto; padding: 1rem 0; transition: max-height 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0s, padding 0.4s ease-out; }
+            #nav-links-container ul { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; margin: 0; }
+            #nav-links-container ul li { margin-left: 0; width: 100%; text-align: center; opacity: 1; transform: none; transition: none; }
+            #nav-links-container ul li a { padding: 1rem 1.5rem; border-bottom: 1px solid var(--grey-medium); width: 100%; box-sizing: border-box; border-bottom-color: transparent !important; display: block; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem; color: var(--grey-dark); }
+            #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background-color: var(--light-blue); color: var(--primary-blue); border-bottom-color: transparent !important; }
+            .login-button-mobile-li { display: block; margin-top: 10px; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+            .login-button.mobile-only { display: inline-block; width: auto; padding: 10px 25px; background-color: var(--primary-blue); color: var(--white) !important; border-radius: var(--border-radius); text-align: center; margin: 10px auto; transition: background-color 0.3s ease, transform 0.2s ease; text-decoration: none; }
+            .login-button.mobile-only:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+            .footer-top { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        }
+         @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.2rem; }
+            .main-container { padding: 1.5rem; margin: 1rem auto; }
+            .footer-top { grid-template-columns: 1fr; text-align: center; }
+            .footer-info, .footer-contact, .footer-social { align-items: center; }
+            .footer-contact p, .footer-social h4 { text-align: center; justify-content: center;}
+            .footer-button { align-self: center; }
+             /* 1) Que el <header> no recorte el menú */
+  header,
+  header .container {
+    overflow: visible !important;
+  }
+
+  /* 2) Estado COLLAPSED del contenedor */
+  #nav-links-container {
+    height: 0;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0.4s, padding 0.4s ease-out;
+  }
+
+  /* 3) Estado EXPANDIDO: forzamos altura, visibilidad y overflow */
+  #nav-links-container.active {
+    height: auto         !important;
+    max-height: calc(100vh - var(--header-height) - 1rem) !important;
+    opacity: 1           !important;
+    visibility: visible  !important;
+    overflow-y: auto     !important;
+    padding: 1rem 0      !important;
+    transition: max-height 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0s, padding 0.4s ease-out;
+    z-index: 2000        !important;
+  }
+
+  /* 4) Forzar que cada <li> se muestre */
+  #nav-links-container.active ul li {
+    opacity: 1               !important;
+    transform: translateX(0) !important;
+    transition: none         !important;
+  }
+         }
+         @media (min-width: 993px) {
+             header nav#main-nav ul { display: flex !important; }
+             #nav-links-container { display: block !important; position: static !important; height: auto !important; max-height: none !important; overflow: visible !important; background: none !important; box-shadow: none !important; padding: 0 !important; opacity: 1 !important; visibility: visible !important; }
+             #nav-links-container ul { flex-direction: row !important; }
+             #nav-links-container ul li { width: auto !important; }
+             #nav-links-container ul li a { border-bottom: 2px solid transparent !important; padding: 5px 0 !important; }
+             #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background: none !important; color: var(--primary-blue) !important; border-bottom-color: var(--primary-blue) !important; }
+             .menu-toggle { display: none !important; }
+             .login-button.desktop-only { display: inline-block !important; }
+             .login-button-mobile-li { display: none !important; }
+             /* Footer layout on larger screens */
+             .footer-top { text-align: left; }
+             .footer-info, .footer-contact, .footer-social { align-items: flex-start; }
+             .footer-contact p, .footer-social h4 { text-align: left; justify-content: flex-start; }
+             .footer-button { align-self: flex-start; }
+             
+         }
+    </style>
+</head>
+<body>
+
+    <header>
+        
+         <div class="container">
+            <a href="index.html#hero" class="logo-link">
+                <img src="bankcloud big logo.png" alt="Logo BankCloud" class="logo-img" id="header-logo">
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="index.html#features" class="nav-link">Beneficios</a></li>
+                        <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                        <li><a href="index.html#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="index.html#formularios" class="nav-link">Solicitudes</a></li>
+                        <li><a href="index.html#politicas" class="nav-link">Políticas</a></li>
+                         <li class="login-button-mobile-li"><a href="#" class="login-button mobile-only">Banca en Línea</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </nav>
+        <a href="banca-en-linea.html" class="login-button desktop-only">Banca en Línea</a>
+    </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1>Formulario de Información Básica</h1>
+        <p class="form-subtitle">Persona Física - Conozca su Cliente</p>
+
+        <form action="#" method="POST">
+            
+            <h2>Información del Cliente</h2>
+             <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ingrese su nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos" class="form-label">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" class="form-input" placeholder="Ingrese sus apellidos" required>
+                </div>
+                 <div class="form-group">
+                    <label for="nombre_usual" class="form-label">Nombre usual (Opcional):</label>
+                    <input type="text" id="nombre_usual" name="nombre_usual" class="form-input">
+                </div>
+                 <div class="form-group">
+                    <label for="estado_civil" class="form-label">Estado Civil:</label>
+                    <select id="estado_civil" name="estado_civil" class="form-select" required>
+                        <option value="">Seleccione...</option>
+                        <option value="soltero">Soltero/a</option>
+                        <option value="casado">Casado/a</option>
+                        <option value="divorciado">Divorciado/a</option>
+                        <option value="viudo">Viudo/a</option>
+                        <option value="union_libre">Unión Libre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sexo" class="form-label">Sexo:</label>
+                    <select id="sexo" name="sexo" class="form-select" required>
+                        <option value="">Seleccione...</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label for="nacionalidad" class="form-label">Nacionalidad:</label>
+                    <input type="text" id="nacionalidad" name="nacionalidad" class="form-input" placeholder="Ej: Dominicana" required>
+                </div>
+                 <div class="form-group">
+                    <label for="tipo_documento" class="form-label">Tipo de documento:</label>
+                    <select id="tipo_documento" name="tipo_documento" class="form-select" required>
+                        <option value="">Seleccione...</option>
+                        <option value="cedula">Cédula</option>
+                        <option value="pasaporte">Pasaporte</option>
+                        <option value="residencia">Residencia</option>
+                    </select>
+                </div>
+                <div class="form-group md:col-span-2">
+                    <label for="numero_documento" class="form-label">Número de documento:</label>
+                    <input type="text" id="numero_documento" name="numero_documento" class="form-input" placeholder="Ingrese el número" required>
+                </div>
+            </div>
+
+            <h3>Dirección Residencial</h3>
+             <div class="form-grid">
+                 <div class="form-group sm:col-span-2">
+                     <label for="calle" class="form-label">Calle/Avenida:</label>
+                     <input type="text" id="calle" name="calle" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="numero_edificio" class="form-label">Número/Edificio:</label>
+                     <input type="text" id="numero_edificio" name="numero_edificio" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="sector" class="form-label">Sector:</label>
+                     <input type="text" id="sector" name="sector" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="apartado_postal" class="form-label">Apartado Postal (Opcional):</label>
+                     <input type="text" id="apartado_postal" name="apartado_postal" class="form-input">
+                 </div>
+                  <div class="form-group">
+                     <label for="provincia" class="form-label">Provincia/Estado:</label>
+                     <input type="text" id="provincia" name="provincia" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="pais" class="form-label">País:</label>
+                     <input type="text" id="pais" name="pais" class="form-input" value="República Dominicana" required>
+                 </div>
+             </div>
+
+             <h3>Información de Contacto</h3>
+             <div class="form-grid">
+                 <div class="form-group">
+                     <label for="email_principal" class="form-label">Correo Electrónico (Principal):</label>
+                     <input type="email" id="email_principal" name="email_principal" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="email_secundario" class="form-label">Correo Electrónico (Secundario):</label>
+                     <input type="email" id="email_secundario" name="email_secundario" class="form-input">
+                 </div>
+                 <div class="form-group">
+                     <label for="tel_residencial" class="form-label">Teléfono Residencial:</label>
+                     <input type="tel" id="tel_residencial" name="tel_residencial" class="form-input">
+                 </div>
+                 <div class="form-group">
+                     <label for="tel_celular" class="form-label">Teléfono Celular:</label>
+                     <input type="tel" id="tel_celular" name="tel_celular" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="tel_otros" class="form-label">Fax/Otros:</label>
+                     <input type="tel" id="tel_otros" name="tel_otros" class="form-input">
+                 </div>
+             </div>
+
+            <h2>Información Laboral y Económica</h2>
+             <div class="form-grid">
+                  <div class="form-group">
+                     <label for="profesion" class="form-label">Profesión:</label>
+                     <input type="text" id="profesion" name="profesion" class="form-input">
+                 </div>
+                 <div class="form-group">
+                     <label for="ocupacion" class="form-label">Ocupación:</label>
+                     <input type="text" id="ocupacion" name="ocupacion" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="actividad_economica" class="form-label">Actividad económica principal:</label>
+                     <input type="text" id="actividad_economica" name="actividad_economica" class="form-input" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="sector_economico" class="form-label">Sector Económico:</label>
+                     <input type="text" id="sector_economico" name="sector_economico" class="form-input" placeholder="Ej: Servicios, Comercio...">
+                 </div>
+                 <div class="form-group">
+                    <label for="vivienda" class="form-label">Vivienda:</label>
+                    <select id="vivienda" name="vivienda" class="form-select" required>
+                        <option value="">Seleccione...</option>
+                        <option value="propia">Propia</option>
+                        <option value="alquilada">Alquilada</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                 </div>
+                 <div class="form-group md:col-span-2">
+                     <label for="nombre_arrendador" class="form-label">Si es alquilada, nombre del arrendador:</label>
+                     <input type="text" id="nombre_arrendador" name="nombre_arrendador" class="form-input">
+                 </div>
+                 <div class="form-group">
+                     <label for="tel_arrendador" class="form-label">Teléfono del arrendador:</label>
+                     <input type="tel" id="tel_arrendador" name="tel_arrendador" class="form-input">
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label for="ingresos_estimados" class="form-label">Ingresos Mensuales Estimados (RD$):</label>
+                 <input type="number" id="ingresos_estimados" name="ingresos_estimados" class="form-input" placeholder="0.00" required>
+             </div>
+             <div class="form-group">
+                 <label for="fuente_patrimonio" class="form-label">Origen del patrimonio/capital (Describa brevemente):</label>
+                 <textarea id="fuente_patrimonio" name="fuente_patrimonio" rows="3" class="form-textarea" placeholder="Ej: Salario, Negocio Propio, Herencia..." required></textarea>
+             </div>
+
+            <h2>Información PEP</h2>
+             <div class="space-y-4 mb-6">
+                 <div class="form-checkbox-label">
+                     <input type="checkbox" id="es_pep" name="es_pep" class="form-checkbox">
+                     <span>¿Es o ha sido una Persona Expuesta Políticamente (PEP)?</span>
+                 </div>
+                 <div id="detalles_pep" class="conditional-field space-y-4">
+                     <div class="form-group">
+                         <label for="cargo_pep" class="form-label">Cargo que ocupa/ocupó como PEP:</label>
+                         <input type="text" id="cargo_pep" name="cargo_pep" class="form-input">
+                     </div>
+                     <div class="form-group">
+                         <label for="institucion_pep" class="form-label">Institución u Organización:</label>
+                         <input type="text" id="institucion_pep" name="institucion_pep" class="form-input">
+                     </div>
+                      <div class="form-group">
+                         <label for="tiempo_cargo_pep" class="form-label">Tiempo ocupando el Cargo:</label>
+                         <input type="text" id="tiempo_cargo_pep" name="tiempo_cargo_pep" class="form-input">
+                     </div>
+                 </div>
+                 <div class="form-checkbox-label">
+                     <input type="checkbox" id="pariente_pep" name="pariente_pep" class="form-checkbox">
+                     <span>¿Tiene algún parentesco (afinidad/consanguinidad) con una PEP?</span>
+                 </div>
+                  <div id="detalles_pariente_pep" class="conditional-field">
+                      <label for="detalle_pariente_pep_input" class="form-label">Si aplica, indique nombre y vínculo:</label>
+                      <input type="text" id="detalle_pariente_pep_input" name="detalle_pariente_pep" class="form-input">
+                  </div>
+                 <div class="form-checkbox-label">
+                     <input type="checkbox" id="asociado_pep" name="asociado_pep" class="form-checkbox">
+                     <span>¿Es asociado cercano (negocios, social) de una PEP?</span>
+                 </div>
+                  <div id="detalles_asociado_pep" class="conditional-field">
+                      <label for="detalle_asociado_pep_input" class="form-label">Si aplica, indique nombre y tipo de asociación:</label>
+                      <input type="text" id="detalle_asociado_pep_input" name="detalle_asociado_pep" class="form-input">
+                  </div>
+             </div>
+
+            <h2>Información FATCA</h2>
+            <div class="space-y-3 mb-6">
+                 <p class="text-sm text-gray-600 mb-3">Por favor, responda las siguientes preguntas relacionadas con la Ley de Cumplimiento Fiscal de Cuentas Extranjeras (FATCA) de EE. UU.</p>
+                <div class="form-checkbox-label">
+                    <input type="checkbox" id="fatca_contribuyente_eeuu" name="fatca_contribuyente_eeuu" class="form-checkbox"> <span>¿Es o ha sido contribuyente de impuestos sobre la renta en EE. UU.? (TIN)</span>
+                </div>
+                <div id="detalles_tin_eeuu" class="conditional-field">
+                     <label for="tin_eeuu" class="form-label">Si aplica, indique su TIN:</label>
+                     <input type="text" id="tin_eeuu" name="tin_eeuu" class="form-input w-full sm:w-1/2">
+                 </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" name="fatca_ciudadano_eeuu" class="form-checkbox"> <span>¿Es ciudadano o residente estadounidense?</span>
+                </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" name="fatca_lugar_nacimiento_eeuu" class="form-checkbox"> <span>¿Su lugar de nacimiento fue en EE. UU.?</span>
+                </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" name="fatca_direccion_telefono_eeuu" class="form-checkbox"> <span>¿Posee dirección o teléfono en EE. UU.?</span>
+                </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" name="fatca_direccion_casillero_eeuu" class="form-checkbox"> <span>¿Cuenta con dirección de casillero o "Forwarding address" en EE. UU.?</span>
+                </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" name="fatca_transferencias_eeuu" class="form-checkbox"> <span>¿Realizará transferencias hacia/desde EE. UU.?</span>
+                </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" name="fatca_poder_eeuu" class="form-checkbox"> <span>¿Cuenta con poder de representación otorgado por persona con dirección en EE. UU.?</span>
+                </div>
+            </div>
+
+            <h2>Información del Producto Solicitado</h2>
+             <div class="form-grid">
+                 <div class="form-group">
+                    <label for="tipo_producto" class="form-label">Tipo de Producto que solicita:</label>
+                    <input type="text" id="tipo_producto" name="tipo_producto" class="form-input" placeholder="Ej: Cuenta de Ahorros..." required>
+                </div>
+                <div class="form-group">
+                    <label for="proposito_producto" class="form-label">Propósito principal del producto:</label>
+                    <input type="text" id="proposito_producto" name="proposito_producto" class="form-input" placeholder="Ej: Ahorro, Gastos..." required>
+                </div>
+                 <div class="form-group">
+                    <label for="deposito_inicial" class="form-label">Monto del depósito inicial (si aplica):</label>
+                    <input type="number" id="deposito_inicial" name="deposito_inicial" class="form-input" placeholder="0.00">
+                </div>
+                 <div class="form-group">
+                    <label for="forma_deposito" class="form-label">Forma del depósito inicial:</label>
+                     <select id="forma_deposito" name="forma_deposito" class="form-select">
+                        <option value="">Seleccione...</option>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="cheque">Cheque</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="origen_transferencias" class="form-label">Países de origen de transferencias (si aplica):</label>
+                <input type="text" id="origen_transferencias" name="origen_transferencias" class="form-input" placeholder="Países desde donde recibirá fondos">
+            </div>
+             <div class="form-group">
+                <label for="destino_transferencias" class="form-label">Países de destino de transferencias (si aplica):</label>
+                <input type="text" id="destino_transferencias" name="destino_transferencias" class="form-input" placeholder="Países hacia donde enviará fondos">
+            </div>
+
+
+            <div class="button-container">
+                <button type="submit" class="submit-button">
+                    Enviar Información
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <footer>
+       
+        <div class="container footer-content">
+             <div class="footer-top">
+                 <div class="footer-info">
+                     <img src="bankcloud big logo.png" alt="Logo BankCloud Footer" class="logo-img" id="footer-logo">
+                     <p class="footer-slogan">Creciendo contigo, conectados en la nube.</p>
+                 </div>
+                 <div class="footer-contact">
+                     <h4>Contacto</h4>
+                     <p><i class="fas fa-phone"></i> +1 (809) 555-1234</p>
+                     <p><i class="fas fa-envelope"></i> contacto@bankcloud.com</p>
+                     <p><i class="fas fa-map-marker-alt"></i> Torre Financiera BankCloud, Av. Winston Churchill #123, Santo Domingo, RD.</p>
+                 </div>
+                 <div class="footer-social">
+                     <h4>Síguenos</h4>
+                     <div class="social-links">
+                         <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                     </div>
+                     <a href="equipo.html" class="footer-button">Conoce Nuestro Equipo</a>
+                     <a href="documentos-legales.html" class="footer-button">Documentos Legales</a>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                <p>&copy; 2025 BankCloud. Todos los derechos reservados.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+      // Navbar Mobile Menu Script
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinksContainer = document.getElementById('nav-links-container');
+      const menuIconBars = mobileMenuButton.querySelector('.fa-bars');
+      const menuIconTimes = mobileMenuButton.querySelector('.fa-times');
+
+      if(menuIconTimes) menuIconTimes.style.display = 'none';
+
+      mobileMenuButton.addEventListener('click', () => {
+          const isActive = navLinksContainer.classList.toggle('active');
+           if (menuIconBars && menuIconTimes) {
+              menuIconBars.style.display = isActive ? 'none' : 'inline-block';
+              menuIconTimes.style.display = isActive ? 'inline-block' : 'none';
+           }
+          mobileMenuButton.setAttribute('aria-expanded', isActive);
+          mobileMenuButton.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      const navLinks = navLinksContainer.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+          link.addEventListener('click', () => { /* no need to close the menu when clicking on a link */ });
+      });
+
+      // Script para campos condicionales PEP y FATCA
+      function setupConditionalField(checkboxId, detailsDivId) {
+          const checkbox = document.getElementById(checkboxId);
+          const detailsDiv = document.getElementById(detailsDivId);
+
+          if (checkbox && detailsDiv) {
+              if (!checkbox.checked) {
+                  detailsDiv.style.maxHeight = '0'; detailsDiv.style.marginTop = '0';
+                  detailsDiv.style.paddingTop = '0'; detailsDiv.style.opacity = '0';
+                  detailsDiv.classList.remove('visible');
+              } else {
+                   detailsDiv.classList.add('visible');
+                   detailsDiv.style.maxHeight = detailsDiv.scrollHeight + "px"; // Set initial height if checked
+                   detailsDiv.style.marginTop = '0.5rem';
+                   detailsDiv.style.paddingTop = '0.5rem';
+                   detailsDiv.style.opacity = '1';
+              }
+              checkbox.addEventListener('change', function() {
+                  if (this.checked) {
+                      detailsDiv.classList.add('visible'); detailsDiv.style.maxHeight = detailsDiv.scrollHeight + "px";
+                      detailsDiv.style.marginTop = '0.5rem'; detailsDiv.style.paddingTop = '0.5rem'; detailsDiv.style.opacity = '1';
+                  } else {
+                      detailsDiv.style.maxHeight = '0'; detailsDiv.style.marginTop = '0';
+                      detailsDiv.style.paddingTop = '0'; detailsDiv.style.opacity = '0';
+                      setTimeout(() => { if (!checkbox.checked) { detailsDiv.classList.remove('visible'); } }, 400);
+                  }
+              });
+          }
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+          setupConditionalField('es_pep', 'detalles_pep');
+          setupConditionalField('pariente_pep', 'detalles_pariente_pep');
+          setupConditionalField('asociado_pep', 'detalles_asociado_pep');
+          setupConditionalField('fatca_contribuyente_eeuu', 'detalles_tin_eeuu');
+      });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos Legales - BankCloud</title>
+    <link rel="icon" href="bankcloudtinylogo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+
+    <style>
+        /* --- Variables CSS --- */
+        :root {
+            --primary-blue: #0056b3; --dark-blue: #003366; --light-blue: #e6f0ff;
+            --accent-blue: #007bff; --white: #ffffff; --grey-light: #f8f9fa;
+            --grey-medium: #e9ecef; --grey-dark: #6c757d; --text-color: #333;
+            --text-light: #555; --footer-text: #adb5bd; --font-family: 'Poppins', sans-serif;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); --border-radius: 8px;
+            --header-height: 70px;
+        }
+        /* --- Estilos Base --- */
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); overflow-x: hidden; }
+        body { font-family: var(--font-family); margin: 0; padding: 0; background-color: var(--white); color: var(--text-color); line-height: 1.7; padding-top: var(--header-height); }
+        .main-container { max-width: 900px; margin: 2rem auto; padding: 2rem; background-color: var(--white); }
+        h1, h2, h3, h4 { color: var(--dark-blue); margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: 2rem; text-align: center; margin-bottom: 2rem; color: var(--primary-blue); }
+        h2 { /* Document Title */
+            font-size: 1.6rem; color: var(--dark-blue); border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.6rem; margin-top: 3rem; margin-bottom: 1.5rem;
+        }
+        h3 { /* Clause Title (Optional) */
+            font-size: 1.2rem; color: var(--primary-blue); margin-top: 1.8rem; margin-bottom: 0.8rem; font-weight: 600;
+        }
+        p { margin-bottom: 1rem; color: var(--text-light); text-align: justify; }
+        strong { font-weight: 600; color: var(--dark-blue); }
+        .document-section { margin-bottom: 3rem; } /* Space between documents */
+        .placeholder-text { color: var(--grey-dark); font-style: italic; } /* Style for placeholders like [Nombre del Cliente] */
+
+        /* --- Navbar Styles --- */
+        header { background-color: var(--white); padding: 0.5rem 0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); min-height: var(--header-height); display: flex; align-items: center; }
+        header .container { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1140px; margin: auto; }
+        .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        header nav#main-nav { margin-left: auto; margin-right: 20px; }
+        #nav-links-container ul { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+        #nav-links-container ul li { margin-left: 18px; }
+        #nav-links-container ul li a { color: var(--grey-dark); font-weight: 400; padding: 5px 0; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; position: relative; display: block; white-space: nowrap; font-size: 0.95rem; text-decoration: none; }
+        #nav-links-container ul li a:hover, #nav-links-container ul li a.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+        .login-button-mobile-li { display: none; }
+        .login-button { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; white-space: nowrap; flex-shrink: 0; text-decoration: none; }
+        .login-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--dark-blue); cursor: pointer; padding: 5px; z-index: 1010; transition: color 0.3s ease; margin-left: 15px; }
+        .menu-toggle:hover { color: var(--primary-blue); }
+        .menu-toggle i { display: inline-block; }
+        .menu-toggle .fa-times { display: none; }
+
+        /* --- Footer Styles --- */
+        footer { background-color: var(--dark-blue); color: var(--footer-text); padding: 50px 0 30px; margin-top: 3rem; }
+        footer .container { max-width: 1140px; margin: auto; padding: 0 15px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; width: 100%; align-items: start; text-align: left; }
+        .footer-info, .footer-contact, .footer-social { display: flex; flex-direction: column; gap: 15px; }
+        .footer-info #footer-logo { height: 35px; width: auto; opacity: 0.9; margin-bottom: 10px; }
+        .footer-slogan { font-size: 1rem; font-style: italic; margin: 0; line-height: 1.5; }
+        .footer-contact h4, .footer-social h4 { margin-bottom: 10px; text-align: left; color: var(--white); }
+        .footer-contact p { margin: 5px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .footer-contact p i { color: var(--accent-blue); width: 16px; text-align: center; }
+        .footer-social { align-items: flex-start; gap: 10px; /* Added gap */ }
+        .social-links { display: flex; gap: 15px; margin-bottom: 5px; /* Reduced margin */ }
+        .social-links a { color: var(--white); font-size: 1.4rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { color: var(--accent-blue); transform: scale(1.1); }
+        .footer-button { display: inline-block; background-color: var(--accent-blue); color: var(--white); padding: 10px 25px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; align-self: flex-start; margin-top: 5px; width: fit-content; }
+        .footer-button:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+        .footer-bottom { margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--grey-dark); width: 100%; text-align: center; }
+        .footer-bottom p { margin: 0; font-size: 0.9rem; color: var(--footer-text); }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            header nav#main-nav ul { display: none; }
+            #nav-links-container.active ul { display: flex; }
+            .login-button.desktop-only { display: none; }
+            .menu-toggle { display: block; order: 3; }
+            header nav#main-nav { margin-right: 0; }
+            #nav-links-container { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); z-index: 999; height: 0; opacity: 0; overflow: hidden; visibility: hidden; transition: height 0.4s ease-out, opacity 0.3s ease-in-out 0.1s, visibility 0s linear 0.4s, padding 0.4s ease-out; }
+            #nav-links-container.active { height: auto; max-height: calc(100vh - 70px - 1rem); opacity: 1; visibility: visible; overflow-y: auto; padding: 1rem 0; transition: max-height 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0s, padding 0.4s ease-out; }
+            #nav-links-container ul { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; margin: 0; }
+            #nav-links-container ul li { margin-left: 0; width: 100%; text-align: center; opacity: 1; transform: none; transition: none; }
+            #nav-links-container ul li a { padding: 1rem 1.5rem; border-bottom: 1px solid var(--grey-medium); width: 100%; box-sizing: border-box; border-bottom-color: transparent !important; display: block; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem; color: var(--grey-dark); }
+            #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background-color: var(--light-blue); color: var(--primary-blue); border-bottom-color: transparent !important; }
+            .login-button-mobile-li { display: block; margin-top: 10px; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+            .login-button.mobile-only { display: inline-block; width: auto; padding: 10px 25px; background-color: var(--primary-blue); color: var(--white) !important; border-radius: var(--border-radius); text-align: center; margin: 10px auto; transition: background-color 0.3s ease, transform 0.2s ease; text-decoration: none; }
+            .login-button.mobile-only:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+            .footer-top { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        }
+         @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+            .main-container { padding: 1.5rem; margin: 1rem auto; }
+            .footer-top { grid-template-columns: 1fr; text-align: center; }
+            .footer-info, .footer-contact, .footer-social { align-items: center; }
+            .footer-contact p, .footer-social h4 { text-align: center; justify-content: center;}
+            .footer-button { align-self: center; }
+         }
+         @media (min-width: 993px) {
+             header nav#main-nav ul { display: flex !important; }
+             #nav-links-container { display: block !important; position: static !important; height: auto !important; max-height: none !important; overflow: visible !important; background: none !important; box-shadow: none !important; padding: 0 !important; opacity: 1 !important; visibility: visible !important; }
+             #nav-links-container ul { flex-direction: row !important; }
+             #nav-links-container ul li { width: auto !important; }
+             #nav-links-container ul li a { border-bottom: 2px solid transparent !important; padding: 5px 0 !important; }
+             #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background: none !important; color: var(--primary-blue) !important; border-bottom-color: var(--primary-blue) !important; }
+             .menu-toggle { display: none !important; }
+             .login-button.desktop-only { display: inline-block !important; }
+             .login-button-mobile-li { display: none !important; }
+             /* Footer layout on larger screens */
+             .footer-top { text-align: left; }
+             .footer-info, .footer-contact, .footer-social { align-items: flex-start; }
+             .footer-contact p, .footer-social h4 { text-align: left; justify-content: flex-start; }
+             .footer-button { align-self: flex-start; }
+         }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html#hero" class="logo-link">
+                <img src="bankcloud big logo.png" alt="Logo BankCloud" class="logo-img" id="header-logo">
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="index.html#features" class="nav-link">Beneficios</a></li>
+                        <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                        <li><a href="index.html#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="index.html#formularios" class="nav-link">Solicitudes</a></li>
+                        <li><a href="index.html#politicas" class="nav-link">Políticas</a></li>
+                         <li class="login-button-mobile-li"><a href="#" class="login-button mobile-only">Banca en Línea</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </nav>
+        <a href="banca-en-linea.html" class="login-button desktop-only">Banca en Línea</a>
+    </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1 data-aos="fade-down" data-aos-duration="1000">Inversiones en BankCloud</h1>
+        <p data-aos="fade-up" data-aos-duration="1000">En BankCloud, te ofrecemos soluciones de inversión diseñadas para maximizar tus rendimientos y ayudarte a alcanzar tus metas financieras. Descubre nuestras opciones y beneficios exclusivos.</p>
+
+        <section class="document-section" data-aos="fade-up" data-aos-duration="1000">
+            <h2>📈 Opciones de Inversión</h2>
+            <ul>
+                <li>💰 <strong>Certificados de Depósito (CD):</strong> Rendimientos garantizados con tasas competitivas y plazos flexibles.</li>
+                <li>📊 <strong>Fondos de Inversión:</strong> Diversifica tu portafolio con acceso a mercados nacionales e internacionales.</li>
+                <li>🔒 <strong>Planes de Ahorro Programado:</strong> Ahorra de manera constante y disfruta de intereses atractivos.</li>
+                <li>🌍 <strong>Inversiones Sostenibles:</strong> Invierte en proyectos que promuevan el desarrollo sostenible.</li>
+            </ul>
+        </section>
+
+        <section class="document-section alternate-bg" data-aos="fade-up" data-aos-duration="1000">
+            <h2>🌟 Ventajas de Invertir en BankCloud</h2>
+            <ul>
+                <li>📈 <strong>Rendimientos Competitivos:</strong> Maximiza tus ganancias con nuestras tasas líderes en el mercado.</li>
+                <li>🔐 <strong>Seguridad Financiera:</strong> Todas nuestras inversiones están respaldadas por estrictos estándares de seguridad.</li>
+                <li>📋 <strong>Asesoría Personalizada:</strong> Nuestro equipo de expertos te ayudará a elegir las mejores opciones según tus objetivos.</li>
+                <li>⏳ <strong>Flexibilidad:</strong> Diseñamos productos que se ajustan a tus plazos y necesidades específicas.</li>
+                <li>🌍 <strong>Impacto Positivo:</strong> Contribuye al desarrollo sostenible mientras haces crecer tu dinero.</li>
+            </ul>
+        </section>
+
+        <section class="document-section" data-aos="fade-up" data-aos-duration="1000">
+            <h2>🛠️ Herramientas de Inversión</h2>
+            <ul>
+                <li>📊 <strong>Simuladores de Inversión:</strong> Calcula tus posibles rendimientos y elige el producto ideal.</li>
+                <li>📱 <strong>Gestión en Línea:</strong> Administra tus inversiones desde nuestra plataforma digital, disponible 24/7.</li>
+                <li>📈 <strong>Reportes Detallados:</strong> Recibe informes periódicos sobre el desempeño de tus inversiones.</li>
+                <li>🔔 <strong>Alertas Personalizadas:</strong> Mantente informado sobre oportunidades y cambios en el mercado.</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+             <div class="footer-top">
+                 <div class="footer-info">
+                     <img src="bankcloud big logo.png" alt="Logo BankCloud Footer" class="logo-img" id="footer-logo">
+                     <p class="footer-slogan">Creciendo contigo, conectados en la nube.</p>
+                 </div>
+                 <div class="footer-contact">
+                     <h4>Contacto</h4>
+                     <p><i class="fas fa-phone"></i> +1 (809) 555-1234</p>
+                     <p><i class="fas fa-envelope"></i> contacto@bankcloud.com</p>
+                     <p><i class="fas fa-map-marker-alt"></i> Torre Financiera BankCloud, Av. Winston Churchill #123, Santo Domingo, RD.</p>
+                 </div>
+                 <div class="footer-social">
+                     <h4>Síguenos</h4>
+                     <div class="social-links">
+                         <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                     </div>
+                     <a href="equipo.html" class="footer-button">Conoce Nuestro Equipo</a>
+                     
+                     <a href="documentos-legales.html" class="footer-button">Documentos Legales</a>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                <p>&copy; 2025 BankCloud. Todos los derechos reservados.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinksContainer = document.getElementById('nav-links-container');
+      const menuIconBars = mobileMenuButton.querySelector('.fa-bars');
+      const menuIconTimes = mobileMenuButton.querySelector('.fa-times');
+
+      if(menuIconTimes) menuIconTimes.style.display = 'none';
+
+      mobileMenuButton.addEventListener('click', () => {
+          const isActive = navLinksContainer.classList.toggle('active');
+           if (menuIconBars && menuIconTimes) {
+              menuIconBars.style.display = isActive ? 'none' : 'inline-block';
+              menuIconTimes.style.display = isActive ? 'inline-block' : 'none';
+           }
+          mobileMenuButton.setAttribute('aria-expanded', isActive);
+          mobileMenuButton.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      const navLinks = navLinksContainer.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+          link.addEventListener('click', () => { /* ignore */ });
+      });
+    </script>
+
+</body>
+</html>

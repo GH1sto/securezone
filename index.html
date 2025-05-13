@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureZone - Protección Digital</title>
+    <link rel="icon" href="cybershieldlogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- Added company name logo in the top left -->
+            <a href="#hero" class="logo-link">
+                <span class="logo-text">SecureZone</span>
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="#features" class="nav-link">Ventajas</a></li>
+                        <li><a href="#productos" class="nav-link">Soluciones</a></li>
+                        <li><a href="#clients" class="nav-link">Clientes</a></li>
+                        <li><a href="#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="#conectar" class="nav-link">Conectar</a></li>
+                        <li><a href="#politicas" class="nav-link">Políticas</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Added Contact button -->
+            <a href="#conectar" class="cta-button header-contact-button" data-aos="fade-up" data-aos-delay="100">Contáctanos</a>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 data-aos="fade-right" data-aos-delay="100">Protección Digital a tu Alcance</h1>
+                <ul>
+                    <li data-aos="fade-up" data-aos-delay="200"><i class="icon">✓</i> Seguridad en tiempo real</li>
+                    <li data-aos="fade-up" data-aos-delay="300"><i class="icon">✓</i> Protección contra ciberataques</li>
+                    <li data-aos="fade-up" data-aos-delay="400"><i class="icon">✓</i> Soluciones personalizadas</li>
+                    <li data-aos="fade-up" data-aos-delay="500"><i class="icon">✓</i> Monitoreo 24/7</li>
+                </ul>
+                <a href="#formularios" class="cta-button" data-aos="fade-up" data-aos-delay="600">Contáctanos</a>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="container section">
+        <h2 data-aos="fade-up">¿Qué necesitas proteger hoy?</h2>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Descubre nuestras soluciones de ciberseguridad</p>
+
+        <div class="tabs-buttons" data-aos="fade-up" data-aos-delay="200">
+            <button class="tab-button active" data-tab="tab-redes">
+                <i class="fas fa-network-wired"></i> Redes
+            </button>
+            <button class="tab-button" data-tab="tab-datos">
+                <i class="fas fa-database"></i> Datos
+            </button>
+            <button class="tab-button" data-tab="tab-dispositivos">
+                <i class="fas fa-laptop"></i> Dispositivos
+            </button>
+            <button class="tab-button" data-tab="tab-usuarios">
+                <i class="fas fa-user-shield"></i> Usuarios
+            </button>
+        </div>
+
+        <div class="tabs-content">
+            <div class="tab-pane active" id="tab-redes">
+                <div class="card-grid" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-card">
+                        <img src="seguridad.jpeg" alt="Protección de Redes" class="responsive-image">
+                        <h4>Protección de Redes</h4>
+                        <p>Defiende tu infraestructura contra intrusiones y ataques.</p>
+                        <a href="redes.html" class="cta-button">Más Información</a>
+                    </div>
+                    <div class="info-card">
+                        <img src="types-of-firewalls.jpg" alt="Firewalls Avanzados" class="responsive-image">
+                        <h4>Firewalls Avanzados</h4>
+                        <p>Configura barreras de seguridad robustas para tu red.</p>
+                        <a href="firewalls.html" class="cta-button">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab-datos">
+                <div class="tab-pane-content">
+                    <h3 data-aos="fade-right">Protección de Datos</h3>
+                    <p data-aos="fade-right" data-aos-delay="100">Asegura la integridad y confidencialidad de tu información.</p>
+                    <a href="datos.html" class="cta-button" data-aos="fade-up" data-aos-delay="200">Más Información</a>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab-dispositivos">
+                <div class="tab-pane-content">
+                    <h3 data-aos="fade-right">Seguridad de Dispositivos</h3>
+                    <p data-aos="fade-right" data-aos-delay="100">Protege tus equipos contra malware y accesos no autorizados.</p>
+                    <a href="dispositivos.html" class="cta-button" data-aos="fade-up" data-aos-delay="200">Más Información</a>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab-usuarios">
+                <div class="tab-pane-content">
+                    <h3 data-aos="fade-right">Gestión de Identidades</h3>
+                    <p data-aos="fade-right" data-aos-delay="100">Controla el acceso y protege las credenciales de tus usuarios.</p>
+                    <a href="usuarios.html" class="cta-button" data-aos="fade-up" data-aos-delay="200">Más Información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="container section alternate-bg">
+        <h2 data-aos="fade-up">Ventajas de Elegir SecureZone</h2>
+        <div class="features-grid">
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">🔒</div>
+                <h3>Seguridad Total</h3>
+                <p>Protección integral para tus sistemas y datos.</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">⚡</div>
+                <h3>Respuesta Rápida</h3>
+                <p>Mitigamos amenazas en tiempo real.</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">📊</div>
+                <h3>Monitoreo Constante</h3>
+                <p>Supervisión 24/7 para garantizar tu tranquilidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos" class="section">
+        <div class="container">
+            <h2 data-aos="fade-up">Nuestras Soluciones</h2>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Servicios diseñados para protegerte</p>
+            <div class="card-grid">
+                <div class="info-card" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>Auditorías de Seguridad</h3>
+                    <p>Identifica vulnerabilidades en tus sistemas.</p>
+                    <a href="auditorias.html">Más Detalles</a>
+                </div>
+                <div class="info-card" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Pruebas de Penetración</h3>
+                    <p>Evalúa la resistencia de tu infraestructura.</p>
+                    <a href="penetracion.html">Explorar Opciones</a>
+                </div>
+                <div class="info-card" data-aos="zoom-in" data-aos-delay="400">
+                    <h3>Capacitación en Ciberseguridad</h3>
+                    <p>Forma a tu equipo para prevenir ataques.</p>
+                    <a href="capacitacion.html">Ver Cursos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="container section">
+        <h2 data-aos="fade-up">Nuestro Cliente</h2>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">BankCloud confía en SecureZone para proteger su infraestructura digital.</p>
+        <div class="clients-grid" data-aos="fade-up" data-aos-delay="200">
+            <div class="client-card">
+                <a href="https://gh1sto.github.io/Bankcloud/" target="_blank">
+                    <img src="bankcloud-logo.png" alt="BankCloud" class="responsive-image">
+                    <p>BankCloud</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Sobre Nosotros -->
+    <section id="sobre-nosotros" class="container section">
+        <h2 data-aos="fade-up">Sobre Nosotros</h2>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Conoce más acerca de SecureZone y nuestra misión en ciberseguridad</p>
+        <div class="content" data-aos="fade-up" data-aos-delay="200">
+            <p>En SecureZone, nos dedicamos a proteger tu infraestructura digital con soluciones innovadoras y un equipo de expertos en ciberseguridad. Nuestra misión es garantizar la seguridad y confianza de nuestros clientes, ofreciendo servicios de alta calidad y tecnología de punta.</p>
+        </div>
+    </section>
+
+    <!-- New Section: Conectar -->
+    <section id="conectar" class="container section">
+        <h2 data-aos="fade-up">Conectar</h2>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Ponte en contacto con nosotros para conocer nuestras soluciones</p>
+        <div class="content" data-aos="fade-up" data-aos-delay="200">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Updated Section: Políticas -->
+    <section id="politicas" class="container section">
+        <h2 data-aos="fade-up">Políticas</h2>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Consulta nuestros términos de uso y política de privacidad</p>
+        <div class="content" data-aos="fade-up" data-aos-delay="200">
+            <p>En SecureZone, la privacidad y seguridad de tus datos son nuestra prioridad. Al acceder y utilizar nuestros servicios, aceptas nuestros términos y condiciones. Para obtener detalles completos sobre el uso de nuestro sitio, las responsabilidades de los usuarios y la protección de la información, por favor revisa nuestra <a href="politicas-securezone.html" target="_blank">Política de Privacidad</a>.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <p class="footer-slogan">Protegiendo tu mundo digital.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +1 (809) 555-5678</p>
+                    <p><i class="fas fa-envelope"></i> soporte@cybershield.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Seguridad Digital #456, Santo Domingo, RD.</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SecureZone. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: false });
+
+        // --- Tabs Script ---
+        const tabsButtons = document.querySelectorAll('.tab-button');
+        const tabsPanes = document.querySelectorAll('.tab-pane');
+
+        tabsButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+
+                // Remove active class from all buttons and panes
+                tabsButtons.forEach(btn => btn.classList.remove('active'));
+                tabsPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Add active class to the clicked button and corresponding pane
+                button.classList.add('active');
+                const targetPane = document.getElementById(targetTab);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

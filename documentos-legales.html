@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos Legales - BankCloud</title>
+    <link rel="icon" href="bankcloudtinylogo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+
+    <style>
+        /* --- Variables CSS --- */
+        :root {
+            --primary-blue: #0056b3; --dark-blue: #003366; --light-blue: #e6f0ff;
+            --accent-blue: #007bff; --white: #ffffff; --grey-light: #f8f9fa;
+            --grey-medium: #e9ecef; --grey-dark: #6c757d; --text-color: #333;
+            --text-light: #555; --footer-text: #adb5bd; --font-family: 'Poppins', sans-serif;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); --border-radius: 8px;
+            --header-height: 70px;
+        }
+        /* --- Estilos Base --- */
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); overflow-x: hidden; }
+        body { font-family: var(--font-family); margin: 0; padding: 0; background-color: var(--white); color: var(--text-color); line-height: 1.7; padding-top: var(--header-height); }
+        .main-container { max-width: 900px; margin: 2rem auto; padding: 2rem; background-color: var(--white); }
+        h1, h2, h3, h4 { color: var(--dark-blue); margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: 2rem; text-align: center; margin-bottom: 2rem; color: var(--primary-blue); }
+        h2 { /* Document Title */
+            font-size: 1.6rem; color: var(--dark-blue); border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.6rem; margin-top: 3rem; margin-bottom: 1.5rem;
+        }
+        h3 { /* Clause Title (Optional) */
+            font-size: 1.2rem; color: var(--primary-blue); margin-top: 1.8rem; margin-bottom: 0.8rem; font-weight: 600;
+        }
+        p { margin-bottom: 1rem; color: var(--text-light); text-align: justify; }
+        strong { font-weight: 600; color: var(--dark-blue); }
+        .document-section { margin-bottom: 3rem; } /* Space between documents */
+        .placeholder-text { color: var(--grey-dark); font-style: italic; } /* Style for placeholders like [Nombre del Cliente] */
+
+        /* --- Navbar Styles --- */
+        header { background-color: var(--white); padding: 0.5rem 0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); min-height: var(--header-height); display: flex; align-items: center; }
+        header .container { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1140px; margin: auto; }
+        .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        header nav#main-nav { margin-left: auto; margin-right: 20px; }
+        #nav-links-container ul { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+        #nav-links-container ul li { margin-left: 18px; }
+        #nav-links-container ul li a { color: var(--grey-dark); font-weight: 400; padding: 5px 0; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; position: relative; display: block; white-space: nowrap; font-size: 0.95rem; text-decoration: none; }
+        #nav-links-container ul li a:hover, #nav-links-container ul li a.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+        .login-button-mobile-li { display: none; }
+        .login-button { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; white-space: nowrap; flex-shrink: 0; text-decoration: none; }
+        .login-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--dark-blue); cursor: pointer; padding: 5px; z-index: 1010; transition: color 0.3s ease; margin-left: 15px; }
+        .menu-toggle:hover { color: var(--primary-blue); }
+        .menu-toggle i { display: inline-block; }
+        .menu-toggle .fa-times { display: none; }
+
+        /* --- Footer Styles --- */
+        footer { background-color: var(--dark-blue); color: var(--footer-text); padding: 50px 0 30px; margin-top: 3rem; }
+        footer .container { max-width: 1140px; margin: auto; padding: 0 15px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; width: 100%; align-items: start; text-align: left; }
+        .footer-info, .footer-contact, .footer-social { display: flex; flex-direction: column; gap: 15px; }
+        .footer-info #footer-logo { height: 35px; width: auto; opacity: 0.9; margin-bottom: 10px; }
+        .footer-slogan { font-size: 1rem; font-style: italic; margin: 0; line-height: 1.5; }
+        .footer-contact h4, .footer-social h4 { margin-bottom: 10px; text-align: left; color: var(--white); }
+        .footer-contact p { margin: 5px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .footer-contact p i { color: var(--accent-blue); width: 16px; text-align: center; }
+        .footer-social { align-items: flex-start; gap: 10px; /* Added gap */ }
+        .social-links { display: flex; gap: 15px; margin-bottom: 5px; /* Reduced margin */ }
+        .social-links a { color: var(--white); font-size: 1.4rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { color: var(--accent-blue); transform: scale(1.1); }
+        .footer-button { display: inline-block; background-color: var(--accent-blue); color: var(--white); padding: 10px 25px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; align-self: flex-start; margin-top: 5px; width: fit-content; }
+        .footer-button:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+        .footer-bottom { margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--grey-dark); width: 100%; text-align: center; }
+        .footer-bottom p { margin: 0; font-size: 0.9rem; color: var(--footer-text); }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            header nav#main-nav ul { display: none; }
+            #nav-links-container.active ul { display: flex; }
+            .login-button.desktop-only { display: none; }
+            .menu-toggle { display: block; order: 3; }
+            header nav#main-nav { margin-right: 0; }
+            #nav-links-container { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); z-index: 999; height: 0; opacity: 0; overflow: hidden; visibility: hidden; transition: height 0.4s ease-out, opacity 0.3s ease-in-out 0.1s, visibility 0s linear 0.4s, padding 0.4s ease-out; }
+            #nav-links-container.active { height: auto; max-height: calc(100vh - 70px - 1rem); opacity: 1; visibility: visible; overflow-y: auto; padding: 1rem 0; transition: max-height 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0s, padding 0.4s ease-out; }
+            #nav-links-container ul { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; margin: 0; }
+            #nav-links-container ul li { margin-left: 0; width: 100%; text-align: center; opacity: 1; transform: none; transition: none; }
+            #nav-links-container ul li a { padding: 1rem 1.5rem; border-bottom: 1px solid var(--grey-medium); width: 100%; box-sizing: border-box; border-bottom-color: transparent !important; display: block; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem; color: var(--grey-dark); }
+            #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background-color: var(--light-blue); color: var(--primary-blue); border-bottom-color: transparent !important; }
+            .login-button-mobile-li { display: block; margin-top: 10px; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+            .login-button.mobile-only { display: inline-block; width: auto; padding: 10px 25px; background-color: var(--primary-blue); color: var(--white) !important; border-radius: var(--border-radius); text-align: center; margin: 10px auto; transition: background-color 0.3s ease, transform 0.2s ease; text-decoration: none; }
+            .login-button.mobile-only:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+            .footer-top { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        }
+         @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+            .main-container { padding: 1.5rem; margin: 1rem auto; }
+            .footer-top { grid-template-columns: 1fr; text-align: center; }
+            .footer-info, .footer-contact, .footer-social { align-items: center; }
+            .footer-contact p, .footer-social h4 { text-align: center; justify-content: center;}
+            .footer-button { align-self: center; }
+         }
+         @media (min-width: 993px) {
+             header nav#main-nav ul { display: flex !important; }
+             #nav-links-container { display: block !important; position: static !important; height: auto !important; max-height: none !important; overflow: visible !important; background: none !important; box-shadow: none !important; padding: 0 !important; opacity: 1 !important; visibility: visible !important; }
+             #nav-links-container ul { flex-direction: row !important; }
+             #nav-links-container ul li { width: auto !important; }
+             #nav-links-container ul li a { border-bottom: 2px solid transparent !important; padding: 5px 0 !important; }
+             #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background: none !important; color: var(--primary-blue) !important; border-bottom-color: var(--primary-blue) !important; }
+             .menu-toggle { display: none !important; }
+             .login-button.desktop-only { display: inline-block !important; }
+             .login-button-mobile-li { display: none !important; }
+             /* Footer layout on larger screens */
+             .footer-top { text-align: left; }
+             .footer-info, .footer-contact, .footer-social { align-items: flex-start; }
+             .footer-contact p, .footer-social h4 { text-align: left; justify-content: flex-start; }
+             .footer-button { align-self: flex-start; }
+         }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html#hero" class="logo-link">
+                <img src="bankcloud big logo.png" alt="Logo BankCloud" class="logo-img" id="header-logo">
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="index.html#features" class="nav-link">Beneficios</a></li>
+                        <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                        <li><a href="index.html#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="index.html#formularios" class="nav-link">Solicitudes</a></li>
+                        <li><a href="index.html#politicas" class="nav-link">Políticas</a></li>
+                         <li class="login-button-mobile-li"><a href="#" class="login-button mobile-only">Banca en Línea</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </nav>
+        <a href="banca-en-linea.html" class="login-button desktop-only">Banca en Línea</a>
+    </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1>Documentos Legales</h1>
+
+        
+        <section id="anexo-general" class="document-section">
+            <h2>Anexo General de Condiciones</h2>
+            <h3>Primera: Jurisdicción y Legislación Aplicable</h3>
+            <p>Las partes acuerdan que cualquier controversia derivada del presente contrato, su interpretación, ejecución o terminación, será resuelta conforme a las leyes de la República Dominicana, y se someterán a la jurisdicción de los tribunales competentes del Distrito Nacional, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
+            <h3>Segunda: Modificación de Términos</h3>
+            <p>EL BANCO podrá modificar los términos y condiciones del presente contrato y sus anexos, incluyendo pero no limitado a tasas, cargos, comisiones, políticas de servicio y requisitos de productos, previa notificación a EL CLIENTE por medios físicos o electrónicos con una antelación mínima de treinta (30) días calendario. La continuación del uso de los productos o servicios por parte de EL CLIENTE después de dicha notificación implicará la aceptación tácita de las modificaciones.</p>
+            <h3>Tercera: Confidencialidad de la Información</h3>
+            <p>EL BANCO se compromete a resguardar la confidencialidad de toda información personal, financiera y crediticia de EL CLIENTE, conforme a las disposiciones de la Ley No. 172-13 de Protección de Datos Personales. No obstante, EL CLIENTE autoriza a EL BANCO a compartir dicha información con terceros aliados estratégicos, burós de crédito, autoridades regulatorias y auditoras, únicamente para fines de análisis de riesgo, evaluación crediticia, cumplimiento regulatorio y servicios relacionados, siempre respetando los derechos de privacidad.</p>
+            <h3>Cuarta: Uso Responsable de Productos y Servicios</h3>
+            <p>EL CLIENTE se compromete a hacer un uso diligente y adecuado de los productos y servicios contratados, conforme a las normativas legales vigentes, así como a mantener actualizada su información de contacto, dirección y demás datos relevantes ante EL BANCO. EL CLIENTE será responsable de cualquier uso indebido o fraudulento que se derive de negligencia o incumplimiento de sus obligaciones contractuales.</p>
+            <h3>Quinta: Comunicaciones Electrónicas</h3>
+            <p>EL CLIENTE acepta recibir comunicaciones, notificaciones, estados de cuenta, alertas de seguridad y cualquier otra información relevante a través de medios electrónicos, tales como correo electrónico, mensajes de texto, aplicaciones móviles o cualquier otra plataforma digital autorizada por EL BANCO, reconociendo el valor probatorio de dichas comunicaciones para todos los efectos legales.</p>
+            <h3>Sexta: Vigencia</h3>
+            <p>El presente Anexo forma parte integral del contrato principal suscrito entre las partes y permanecerá vigente mientras exista una relación contractual entre EL BANCO y EL CLIENTE.</p>
+            <p class="placeholder-text">Firmado en la ciudad de Santo Domingo, a los [Día] días del mes de [Mes] del año [Año].</p>
+            
+        </section>
+
+        
+        <section id="autorizacion-consulta" class="document-section">
+            <h2>Autorización de Consulta de Información Crediticia</h2>
+            <p>Yo, <span class="placeholder-text">[Nombre del Cliente]</span>, titular de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, mediante el presente documento, autorizo expresa y voluntariamente a Banco BankCloud a consultar, verificar, monitorear y actualizar mi información crediticia ante cualquier buró de crédito autorizado, a los fines de evaluación de productos financieros presentes o futuros, así como para la administración y gestión de cualquier relación contractual vigente.</p>
+            <p>Reconozco que esta autorización permanecerá en vigor durante toda la vigencia de mi relación contractual con Banco BankCloud y hasta tanto hayan concluido todas las obligaciones que pudiera tener frente a la entidad, independientemente de que en el futuro no mantenga productos activos.</p>
+            <p>Asimismo, autorizo a Banco BankCloud a conservar y tratar mis datos personales de conformidad con la Ley No. 172-13 de Protección de Datos Personales, garantizando la confidencialidad y el uso exclusivo para los fines indicados.</p>
+            <p class="placeholder-text">Firmado en la ciudad de Santo Domingo, a los [Día] días del mes de [Mes] del año [Año].</p>
+             
+        </section>
+
+        
+        <section id="contrato-ahorros" class="document-section">
+            <h2>Contrato de Apertura de Cuenta de Ahorros</h2>
+            <p>Entre Banco BankCloud, entidad financiera legalmente constituida conforme a las leyes de la República Dominicana, en adelante denominado "EL BANCO", y <span class="placeholder-text">[Nombre del Cliente]</span>, titular de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, en adelante denominado "EL CLIENTE", se suscribe el presente Contrato de Apertura de Cuenta de Ahorros, el cual se regirá conforme a las siguientes estipulaciones:</p>
+            <p>EL BANCO, en virtud del presente contrato, se compromete a abrir y administrar a favor de EL CLIENTE una cuenta de ahorros bajo los términos y condiciones establecidos en este documento y en las políticas internas vigentes. EL CLIENTE podrá realizar depósitos y retiros de fondos en la cuenta, conforme a las modalidades y limitaciones que EL BANCO establezca. Los fondos depositados generarán intereses sobre el saldo disponible, aplicándose las tasas que EL BANCO tenga vigentes en cada momento, publicadas oportunamente.</p>
+            <p>EL CLIENTE se compromete a mantener en su cuenta un saldo mínimo de RD$ <span class="placeholder-text">[Saldo Mínimo]</span>, pudiendo EL BANCO cargar las comisiones correspondientes en caso de que no se cumpla con dicho requisito. Asimismo, EL CLIENTE autoriza expresamente a EL BANCO a debitar de su cuenta los cargos, comisiones y penalidades que resulten aplicables, de acuerdo al tarifario vigente que podrá ser modificado previo aviso de treinta (30) días.</p>
+            <p>EL BANCO podrá utilizar medios electrónicos para remitir estados de cuenta, notificaciones o cualquier otra comunicación relacionada a la cuenta, reconociendo EL CLIENTE la validez de tales comunicaciones electrónicas para todos los fines legales. EL BANCO garantiza la confidencialidad de los datos personales de EL CLIENTE, conforme a lo dispuesto en la Ley No. 172-13 de Protección de Datos Personales, y se compromete a utilizarlos exclusivamente para los fines propios de la relación contractual.</p>
+            <p>El presente contrato podrá ser terminado por cualquiera de las partes mediante notificación escrita con un preaviso de quince (15) días hábiles, sin perjuicio de los derechos y obligaciones pendientes entre las partes. Este contrato se regirá y será interpretado conforme a las leyes de la República Dominicana.</p>
+            <p class="placeholder-text">Firmado en la ciudad de Santo Domingo, a los [Día] días del mes de [Mes] del año [Año].</p>
+             
+        </section>
+
+        
+        <section id="contrato-libreta" class="document-section">
+            <h2>Contrato de Emisión de Libreta de Ahorros</h2>
+            <p>Entre Banco BankCloud, institución debidamente constituida, y <span class="placeholder-text">[Nombre del Cliente]</span>, titular de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, se acuerda lo siguiente:</p>
+            <p>El presente contrato tiene por objeto la emisión de una libreta de ahorros a favor de EL CLIENTE, la cual servirá exclusivamente como medio de registro y control de las operaciones efectuadas en su cuenta de ahorros. La libreta no constituye un título valor, ni representa de manera autónoma un derecho sobre los fondos, limitándose a reflejar los movimientos conforme a los registros de EL BANCO.</p>
+            <p>EL CLIENTE se compromete a custodiar diligentemente la libreta de ahorros y a notificar de inmediato a EL BANCO cualquier pérdida, daño o sustracción de la misma. Las actualizaciones de movimientos reflejadas en la libreta podrán realizarse únicamente en las oficinas de EL BANCO y bajo las condiciones que este establezca.</p>
+            <p>En caso de discrepancia entre la información contenida en la libreta y los registros electrónicos de EL BANCO, prevalecerá lo consignado en los sistemas internos de EL BANCO. EL CLIENTE deberá revisar periódicamente su libreta y reportar cualquier inconsistencia en un plazo máximo de cinco (5) días hábiles.</p>
+            <p>La información contenida en la libreta será protegida conforme a lo establecido en la Ley No. 172-13 de Protección de Datos Personales. Ambas partes acuerdan que cualquier controversia derivada del presente contrato será resuelta conforme a las leyes de la República Dominicana.</p>
+            <p class="placeholder-text">Firmado en la ciudad de Santo Domingo, a la fecha [Día/Mes/Año].</p>
+             
+        </section>
+
+        
+        <section id="contrato-tdc-debito" class="document-section">
+            <h2>Contrato de Emisión y Uso de Tarjeta de Débito</h2>
+            <p>Entre Banco BankCloud, en lo adelante denominado "EL BANCO", y el/la señor(a) <span class="placeholder-text">[Nombre del Cliente]</span>, portador(a) de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, en lo adelante "EL CLIENTE", se suscribe el presente Contrato de Emisión y Uso de Tarjeta de Débito, el cual se regirá por las siguientes disposiciones:</p>
+            <p>El objeto de este contrato es regular la emisión, utilización y administración de la tarjeta de débito que EL BANCO pondrá a disposición de EL CLIENTE. La tarjeta de débito permitirá el acceso a los fondos depositados en la cuenta del CLIENTE para efectuar pagos, retiros, consultas de saldo, transferencias y otras operaciones autorizadas en redes nacionales e internacionales.</p>
+            <p>La tarjeta será emitida al CLIENTE tras la firma del presente contrato, quedando sujeta a un proceso de activación mediante el cual EL CLIENTE deberá establecer un Número de Identificación Personal (PIN) único y confidencial. EL CLIENTE se compromete a custodiar diligentemente la tarjeta y su PIN, absteniéndose de revelarlos a terceros.</p>
+            <p>Las transacciones efectuadas mediante la tarjeta de débito serán cargadas automáticamente al saldo disponible en la cuenta asociada. El CLIENTE acepta los cargos, comisiones y penalidades estipuladas en el tarifario vigente, incluyendo los costos por retiros en cajeros automáticos de terceros, reposiciones de tarjeta, y cualquier otro servicio vinculado al uso de la tarjeta.</p>
+            <p>EL BANCO se reserva el derecho de suspender o cancelar la tarjeta en cualquier momento por sospecha de fraude, uso indebido, inactividad prolongada o a solicitud expresa de EL CLIENTE. Asimismo, los datos personales recabados en relación al uso de la tarjeta serán tratados de acuerdo a la Ley No. 172-13 de Protección de Datos Personales.</p>
+            <p>El presente contrato se regirá por las leyes de la República Dominicana y ambas partes manifiestan su aceptación y conformidad firmando en dos ejemplares de igual tenor y efecto.</p>
+             
+        </section>
+
+        
+        <section id="contrato-tdc-credito" class="document-section">
+            <h2>Contrato de Solicitud y Uso de Tarjeta de Crédito</h2>
+             <p>Entre Banco BankCloud, en adelante "EL BANCO", y <span class="placeholder-text">[Nombre del Cliente]</span>, titular de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, en adelante "EL CLIENTE", se suscribe el presente Contrato de Solicitud y Uso de Tarjeta de Crédito, que se regirá conforme a los términos siguientes:</p>
+             <p>EL BANCO, previa evaluación de la capacidad crediticia de EL CLIENTE, se compromete a emitir y poner a disposición de este una tarjeta de crédito con un límite inicial de crédito ascendente a RD$ <span class="placeholder-text">[Monto Aprobado]</span>, pudiendo dicho límite ser modificado en el futuro conforme a revisiones periódicas realizadas por EL BANCO. La tarjeta permitirá a EL CLIENTE realizar pagos, avances de efectivo y otras operaciones autorizadas en establecimientos afiliados.</p>
+             <p>EL CLIENTE se obliga a utilizar la tarjeta conforme a la ley, absteniéndose de realizar actividades ilícitas o fraudulentas. Asimismo, se compromete a pagar puntualmente las sumas adeudadas, conforme a los estados de cuenta emitidos por EL BANCO, en las fechas establecidas. En caso de mora, EL CLIENTE acepta el pago de intereses moratorios y cargos por incumplimiento, conforme a la tasa y condiciones vigentes publicadas por EL BANCO.</p>
+             <p>EL CLIENTE autoriza a EL BANCO a consultar, periódicamente y sin necesidad de previo aviso, su historial crediticio en los burós de crédito autorizados. De igual forma, EL BANCO podrá modificar las tasas de interés, comisiones, cargos y demás condiciones del producto, mediante aviso escrito o electrónico dado con una antelación mínima de treinta (30) días.</p>
+             <p>La pérdida o sustracción de la tarjeta deberá ser notificada de inmediato a EL BANCO, quedando bajo responsabilidad de EL CLIENTE todas las transacciones efectuadas hasta el momento de la notificación. EL BANCO se reserva el derecho de cancelar la tarjeta en caso de incumplimiento de las obligaciones asumidas o de detectar operaciones sospechosas.</p>
+             <p>La información personal de EL CLIENTE será protegida conforme a lo dispuesto en la Ley No. 172-13 de Protección de Datos Personales. Ambas partes acuerdan que cualquier disputa relacionada con este contrato será sometida a la jurisdicción de los tribunales competentes de la República Dominicana.</p>
+             <p class="placeholder-text">Firmado en la ciudad de Santo Domingo, a los [Día] días del mes de [Mes] del año [Año].</p>
+              
+        </section>
+
+        
+        <section id="contrato-prestamo" class="document-section">
+             <h2>Contrato de Préstamo Personal</h2>
+             <p>Entre Banco BankCloud, en adelante denominado "EL BANCO", y <span class="placeholder-text">[Nombre del Cliente]</span>, portador(a) de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, en adelante "EL CLIENTE", se celebra el presente Contrato de Préstamo Personal, bajo los siguientes términos:</p>
+             <p>EL BANCO concede a EL CLIENTE un préstamo personal por un monto total de RD$ <span class="placeholder-text">[Monto Prestado]</span>, el cual será desembolsado en la cuenta designada por EL CLIENTE. El préstamo se otorgará a un plazo de <span class="placeholder-text">[Meses]</span> meses, con una tasa de interés <span class="placeholder-text">[fija/variable]</span> de <span class="placeholder-text">[Tasa]%</span> anual, según las condiciones indicadas en el anexo que forma parte integrante de este contrato.</p>
+             <p>EL CLIENTE se compromete a pagar las cuotas mensuales por el monto de RD$ <span class="placeholder-text">[Monto de Cuota]</span>, que incluyen capital e intereses, mediante débito automático de la cuenta bancaria indicada. En caso de falta de fondos o mora en el pago, EL CLIENTE acepta pagar intereses moratorios a una tasa de <span class="placeholder-text">[Tasa Mora]%</span> mensual, así como los cargos administrativos que pudieran generarse.</p>
+             <p>En garantía del cumplimiento de sus obligaciones, EL CLIENTE autoriza a EL BANCO a retener fondos de cualquier cuenta a su nombre y a aplicar las acciones judiciales o extrajudiciales pertinentes en caso de incumplimiento. EL CLIENTE podrá, en cualquier momento, efectuar pagos anticipados totales o parciales sin penalidad, previa notificación escrita a EL BANCO.</p>
+             <p>La información personal suministrada será utilizada exclusivamente para fines relacionados con la ejecución y control del presente contrato, bajo los parámetros de confidencialidad establecidos por la Ley No. 172-13 de Protección de Datos Personales.</p>
+             <p>Las partes acuerdan que este contrato se regirá por las leyes de la República Dominicana y que toda controversia derivada del mismo será sometida a la jurisdicción de los tribunales competentes.</p>
+             <p class="placeholder-text">Firmado en la ciudad de Santo Domingo, a los [Día] días del mes de [Mes] del año [Año].</p>
+              
+        </section>
+
+       
+        <section id="contrato-atm" class="document-section">
+            <h2>Contrato de Servicio de Cajero Automático (ATM)</h2>
+            <p>Entre Banco BankCloud, entidad financiera organizada conforme a las leyes de la República Dominicana, en adelante denominado "EL BANCO", y el/la señor(a) <span class="placeholder-text">[Nombre del Cliente]</span>, titular de la cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, en lo adelante "EL CLIENTE", se celebra el presente Contrato de Servicio de Cajero Automático (ATM), mediante el cual EL BANCO proveerá a EL CLIENTE el acceso a su red de cajeros automáticos para realizar operaciones bancarias tales como retiros, consultas de saldo, transferencias internas y otros servicios debidamente autorizados.</p>
+            <p>EL BANCO emitirá a favor de EL CLIENTE una tarjeta de acceso, protegida mediante un Número de Identificación Personal (PIN), cuya confidencialidad y custodia serán responsabilidad exclusiva de EL CLIENTE. Este último se compromete a cambiar el PIN inicial al momento de la activación y a mantener en todo momento la privacidad de sus datos de acceso. En caso de pérdida, robo o sospecha de acceso no autorizado, EL CLIENTE deberá informar de inmediato a EL BANCO, quien procederá conforme a sus protocolos de seguridad.</p>
+            <p>EL CLIENTE reconoce y acepta que EL BANCO no será responsable de las pérdidas ocasionadas por transacciones realizadas por terceros debido a la negligencia del CLIENTE en la protección de la tarjeta o del PIN. Asimismo, EL BANCO no será responsable de las interrupciones temporales del servicio que se deriven de mantenimientos, fallas técnicas o eventos de fuerza mayor.</p>
+            <p>EL CLIENTE autoriza a EL BANCO a cobrar las tarifas y comisiones correspondientes a las operaciones realizadas en los cajeros automáticos, de acuerdo al tarifario vigente, el cual podrá ser actualizado previa notificación de treinta (30) días. Los datos personales recabados a través del uso de cajeros automáticos serán tratados conforme a la Ley No. 172-13 de Protección de Datos Personales.</p>
+            <p>Cualquiera de las partes podrá dar por terminado el presente contrato mediante notificación escrita. EL BANCO podrá cancelar el acceso de manera inmediata en caso de incumplimiento de las obligaciones contractuales por parte del CLIENTE o sospecha de fraude.</p>
+            <p>El presente contrato se rige por las leyes de la República Dominicana. En fe de lo cual, ambas partes suscriben el presente documento en la ciudad de Santo Domingo, a la fecha <span class="placeholder-text">[Día/Mes/Año]</span>.</p>
+             
+        </section>
+
+        
+        <section id="carta-cancelacion" class="document-section">
+            <h2>Modelo de Carta de Cancelación</h2>
+            <p><strong>[Nombre del Cliente]</strong><br>
+            Cédula No. <span class="placeholder-text">[Número de Cédula]</span><br>
+            Teléfono: <span class="placeholder-text">[Teléfono]</span><br>
+            Correo electrónico: <span class="placeholder-text">[Correo Electrónico]</span></p>
+            <p>Santo Domingo, <span class="placeholder-text">[Fecha]</span></p>
+            <p><strong>Señores</strong><br>
+            <strong>Banco BankCloud</strong><br>
+            Presente</p>
+            <p><strong>Asunto: Solicitud de Cancelación de Producto Bancario</strong></p>
+            <p>Muy respetuosamente,</p>
+            <p>Yo, <span class="placeholder-text">[Nombre del Cliente]</span>, identificado con cédula de identidad No. <span class="placeholder-text">[Número de Cédula]</span>, solicito formalmente la cancelación de <span class="placeholder-text">[especificar: cuenta de ahorros / tarjeta de crédito / préstamo personal]</span>, número <span class="placeholder-text">[Número de Producto]</span>, que mantengo en su prestigiosa institución.</p>
+            <p>Declaro que he cumplido con todas las obligaciones asociadas al producto y solicito que se proceda a la cancelación definitiva del mismo, liberándome de toda obligación adicional. Solicito también la emisión de una constancia de cancelación para mis archivos personales.</p>
+            <p>Agradezco de antemano su atención y quedo a disposición para completar cualquier requerimiento adicional.</p>
+            <p>Atentamente,</p>
+            <p><span class="placeholder-text">[Firma]</span><br>
+            <span class="placeholder-text">[Nombre del Cliente]</span></p>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+             <div class="footer-top">
+                 <div class="footer-info">
+                     <img src="bankcloud big logo.png" alt="Logo BankCloud Footer" class="logo-img" id="footer-logo">
+                     <p class="footer-slogan">Creciendo contigo, conectados en la nube.</p>
+                 </div>
+                 <div class="footer-contact">
+                     <h4>Contacto</h4>
+                     <p><i class="fas fa-phone"></i> +1 (809) 555-1234</p>
+                     <p><i class="fas fa-envelope"></i> contacto@bankcloud.com</p>
+                     <p><i class="fas fa-map-marker-alt"></i> Torre Financiera BankCloud, Av. Winston Churchill #123, Santo Domingo, RD.</p>
+                 </div>
+                 <div class="footer-social">
+                     <h4>Síguenos</h4>
+                     <div class="social-links">
+                         <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                     </div>
+                     <a href="equipo.html" class="footer-button">Conoce Nuestro Equipo</a>
+                     
+                     <a href="documentos-legales.html" class="footer-button">Documentos Legales</a>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                <p>&copy; 2025 BankCloud. Todos los derechos reservados.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinksContainer = document.getElementById('nav-links-container');
+      const menuIconBars = mobileMenuButton.querySelector('.fa-bars');
+      const menuIconTimes = mobileMenuButton.querySelector('.fa-times');
+
+      if(menuIconTimes) menuIconTimes.style.display = 'none';
+
+      mobileMenuButton.addEventListener('click', () => {
+          const isActive = navLinksContainer.classList.toggle('active');
+           if (menuIconBars && menuIconTimes) {
+              menuIconBars.style.display = isActive ? 'none' : 'inline-block';
+              menuIconTimes.style.display = isActive ? 'inline-block' : 'none';
+           }
+          mobileMenuButton.setAttribute('aria-expanded', isActive);
+          mobileMenuButton.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      const navLinks = navLinksContainer.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+          link.addEventListener('click', () => { /* ignore */ });
+      });
+    </script>
+
+</body>
+</html>

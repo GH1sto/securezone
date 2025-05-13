@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas - BankCloud</title>
+    <link rel="icon" href="bankcloudtinylogo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+
+    <style>
+        /* --- Variables CSS --- */
+        :root {
+            --primary-blue: #0056b3; --dark-blue: #003366; --light-blue: #e6f0ff;
+            --accent-blue: #007bff; --white: #ffffff; --grey-light: #f8f9fa;
+            --grey-medium: #e9ecef; --grey-dark: #6c757d; --text-color: #333;
+            --text-light: #555; --footer-text: #adb5bd; --font-family: 'Poppins', sans-serif;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); --border-radius: 8px;
+            --header-height: 70px;
+        }
+        /* --- Estilos Base --- */
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); overflow-x: hidden; }
+        body { font-family: var(--font-family); margin: 0; padding: 0; background-color: var(--white); /* White background for policy page */ color: var(--text-color); line-height: 1.7; padding-top: var(--header-height); }
+        .main-container { max-width: 900px; margin: 2rem auto; padding: 2rem; background-color: var(--white); /* Keep white or change if needed */ }
+        h1, h2, h3, h4 { color: var(--dark-blue); margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: 2rem; text-align: center; margin-bottom: 2rem; color: var(--primary-blue); }
+        h2 { /* Policy Section Title */
+            font-size: 1.6rem; color: var(--dark-blue); border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.6rem; margin-top: 3rem; margin-bottom: 1.5rem;
+        }
+        h3 { /* Sub-section Title */
+            font-size: 1.2rem; color: var(--primary-blue); margin-top: 1.8rem; margin-bottom: 0.8rem; font-weight: 600;
+        }
+        p { margin-bottom: 1rem; color: var(--text-light); text-align: justify; }
+        ul.policy-list { list-style: disc; padding-left: 1.8rem; margin-bottom: 1rem; }
+        ul.policy-list li { margin-bottom: 0.6rem; color: var(--text-light); }
+        strong { font-weight: 600; color: var(--dark-blue); }
+
+        /* --- Navbar Styles --- */
+        header { background-color: var(--white); padding: 0.5rem 0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); min-height: var(--header-height); display: flex; align-items: center; }
+        header .container { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1140px; margin: auto; }
+        .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        header nav#main-nav { margin-left: auto; margin-right: 20px; }
+        #nav-links-container ul { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+        #nav-links-container ul li { margin-left: 18px; }
+        #nav-links-container ul li a { color: var(--grey-dark); font-weight: 400; padding: 5px 0; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; position: relative; display: block; white-space: nowrap; font-size: 0.95rem; text-decoration: none; }
+        #nav-links-container ul li a:hover, #nav-links-container ul li a.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+        .login-button-mobile-li { display: none; }
+        .login-button { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; white-space: nowrap; flex-shrink: 0; text-decoration: none; }
+        .login-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--dark-blue); cursor: pointer; padding: 5px; z-index: 1010; transition: color 0.3s ease; margin-left: 15px; }
+        .menu-toggle:hover { color: var(--primary-blue); }
+        .menu-toggle i { display: inline-block; }
+        .menu-toggle .fa-times { display: none; }
+
+        /* --- Footer Styles --- */
+        footer { background-color: var(--dark-blue); color: var(--footer-text); padding: 50px 0 30px; margin-top: 3rem; }
+        footer .container { max-width: 1140px; margin: auto; padding: 0 15px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; width: 100%; align-items: start; text-align: left; }
+        .footer-info, .footer-contact, .footer-social { display: flex; flex-direction: column; gap: 15px; }
+        .footer-info #footer-logo { height: 35px; width: auto; opacity: 0.9; margin-bottom: 10px; }
+        .footer-slogan { font-size: 1rem; font-style: italic; margin: 0; line-height: 1.5; }
+        .footer-contact h4, .footer-social h4 { margin-bottom: 10px; text-align: left; color: var(--white); }
+        .footer-contact p { margin: 5px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .footer-contact p i { color: var(--accent-blue); width: 16px; text-align: center; }
+        .footer-social { align-items: flex-start; }
+        .social-links { display: flex; gap: 15px; margin-bottom: 15px; }
+        .social-links a { color: var(--white); font-size: 1.4rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { color: var(--accent-blue); transform: scale(1.1); }
+        .footer-button { display: inline-block; background-color: var(--accent-blue); color: var(--white); padding: 10px 25px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; align-self: flex-start; }
+        .footer-button:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+        .footer-bottom { margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--grey-dark); width: 100%; text-align: center; }
+        .footer-bottom p { margin: 0; font-size: 0.9rem; color: var(--footer-text); }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            header nav#main-nav ul { display: none; }
+            #nav-links-container.active ul { display: flex; }
+            .login-button.desktop-only { display: none; }
+            .menu-toggle { display: block; order: 3; }
+            header nav#main-nav { margin-right: 0; }
+            #nav-links-container { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); z-index: 999; height: 0; opacity: 0; overflow: hidden; visibility: hidden; transition: height 0.4s ease-out, opacity 0.3s ease-in-out 0.1s, visibility 0s linear 0.4s, padding 0.4s ease-out; }
+            #nav-links-container.active { height: auto; max-height: calc(100vh - 70px - 1rem); opacity: 1; visibility: visible; overflow-y: auto; padding: 1rem 0; transition: max-height 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0s, padding 0.4s ease-out; }
+            #nav-links-container ul { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; margin: 0; }
+            #nav-links-container ul li { margin-left: 0; width: 100%; text-align: center; opacity: 1; transform: none; transition: none; }
+            #nav-links-container ul li a { padding: 1rem 1.5rem; border-bottom: 1px solid var(--grey-medium); width: 100%; box-sizing: border-box; border-bottom-color: transparent !important; display: block; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem; color: var(--grey-dark); }
+            #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background-color: var(--light-blue); color: var(--primary-blue); border-bottom-color: transparent !important; }
+            .login-button-mobile-li { display: block; margin-top: 10px; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+            .login-button.mobile-only { display: inline-block; width: auto; padding: 10px 25px; background-color: var(--primary-blue); color: var(--white) !important; border-radius: var(--border-radius); text-align: center; margin: 10px auto; transition: background-color 0.3s ease, transform 0.2s ease; text-decoration: none; }
+            .login-button.mobile-only:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+            .footer-top { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        }
+         @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+            .main-container { padding: 1.5rem; margin: 1rem auto; }
+            .footer-top { grid-template-columns: 1fr; text-align: center; }
+            .footer-info, .footer-contact, .footer-social { align-items: center; }
+            .footer-contact p, .footer-social h4 { text-align: center; justify-content: center;}
+            .footer-button { align-self: center; }
+         }
+         @media (min-width: 993px) {
+             header nav#main-nav ul { display: flex !important; }
+             #nav-links-container { display: block !important; position: static !important; height: auto !important; max-height: none !important; overflow: visible !important; background: none !important; box-shadow: none !important; padding: 0 !important; opacity: 1 !important; visibility: visible !important; }
+             #nav-links-container ul { flex-direction: row !important; }
+             #nav-links-container ul li { width: auto !important; }
+             #nav-links-container ul li a { border-bottom: 2px solid transparent !important; padding: 5px 0 !important; }
+             #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background: none !important; color: var(--primary-blue) !important; border-bottom-color: var(--primary-blue) !important; }
+             .menu-toggle { display: none !important; }
+             .login-button.desktop-only { display: inline-block !important; }
+             .login-button-mobile-li { display: none !important; }
+             /* Footer layout on larger screens */
+             .footer-top { text-align: left; }
+             .footer-info, .footer-contact, .footer-social { align-items: flex-start; }
+             .footer-contact p, .footer-social h4 { text-align: left; justify-content: flex-start; }
+             .footer-button { align-self: flex-start; }
+         }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html#hero" class="logo-link">
+                <img src="bankcloud big logo.png" alt="Logo BankCloud" class="logo-img" id="header-logo">
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="index.html#features" class="nav-link">Beneficios</a></li>
+                        <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                        <li><a href="index.html#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="index.html#formularios" class="nav-link">Solicitudes</a></li>
+                        <li><a href="#politicas" class="nav-link active">Políticas</a></li>
+                         <li class="login-button-mobile-li"><a href="#" class="login-button mobile-only">Banca en Línea</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </nav>
+        <a href="banca-en-linea.html" class="login-button desktop-only">Banca en Línea</a>
+    </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1>Políticas de BankCloud</h1>
+
+        
+        <section id="politica-transparencia">
+            <h2>Política de Transparencia Bancaria</h2>
+            <h3>1. Introducción</h3>
+            <p>En Banco BanKCloud, creemos en la transparencia como pilar fundamental de nuestra relación con los clientes. Nos comprometemos a proporcionar información clara, veraz y accesible sobre nuestros productos y servicios financieros, permitiendo a nuestros clientes tomar decisiones informadas y seguras.</p>
+
+            <h3>2. Comunicación Clara sobre Términos y Condiciones</h3>
+            <ul class="policy-list">
+                <li>Toda la información sobre nuestros productos y servicios será presentada en un lenguaje sencillo y comprensible.</li>
+                <li>Los términos y condiciones de cada producto estarán disponibles en formato físico y digital para consulta en cualquier momento.</li>
+                <li>Cualquier cambio en las condiciones será comunicado oportunamente a los clientes a través de nuestros canales oficiales.</li>
+            </ul>
+
+            <h3>3. Información sobre Tasas de Interés, Comisiones y Tarifas</h3>
+            <ul class="policy-list">
+                <li>Publicamos regularmente las tasas de interés aplicables a cuentas de ahorro, cuentas corrientes, préstamos y demás productos financieros.</li>
+                <li>Se detallan todas las comisiones y tarifas asociadas a nuestros servicios, incluyendo costos por mantenimiento de cuenta, transferencias y otros cargos adicionales.</li>
+                <li>Cualquier modificación en tasas o tarifas será notificada con anticipación según la normativa vigente.</li>
+            </ul>
+
+             <h3>4. Publicación de Reportes Financieros</h3>
+             <ul class="policy-list">
+                 <li>Banco BanKCloud publicará reportes anuales y trimestrales con información detallada sobre nuestra estabilidad financiera y desempeño operativo.</li>
+                 <li>Estos informes estarán disponibles en nuestra página web y en nuestras sucursales para acceso público.</li>
+                 <li>Garantizamos la actualización de nuestros reportes según los estándares regulatorios y de transparencia.</li>
+             </ul>
+
+             <h3>5. Transparencia y Acceso a la Información</h3>
+             <ul class="policy-list">
+                 <li>Banco BanKCloud se compromete a garantizar la transparencia en sus operaciones y a facilitar el acceso a la información pública, de acuerdo con la Ley General de Libre Acceso a la Información Pública No. 200-04.</li>
+                 <li>La Ley No. 200-04, junto con su Reglamento de Aplicación, constituye el marco normativo que permite a los ciudadanos solicitar información sobre los actos y actividades de la Administración Pública.</li>
+                 <li>La información relevante sobre nuestras operaciones estará disponible para consulta a través de nuestros canales oficiales, garantizando el derecho de nuestros clientes a conocer los detalles de nuestra gestión financiera.</li>
+             </ul>
+
+             <h3>6. Compromiso con la Transparencia</h3>
+             <ul class="policy-list">
+                <li>Banco BanKCloud reafirma el compromiso de la Alta Gerencia con la transparencia y la confianza de sus clientes, garantizando un ambiente más seguro y confiable.</li>
+                <li>La transparencia es un valor fundamental para Banco BanKCloud, que se esfuerza por mantener la confianza de sus clientes y la sociedad.</li>
+                <li>Nos comprometemos a seguir implementando mejores prácticas que refuercen la transparencia en nuestras operaciones y fortalezcan nuestra relación con los clientes.</li>
+             </ul>
+
+            <h3>7. Atención al Cliente y Resolución de Consultas</h3>
+            <ul class="policy-list">
+                <li>Contamos con diversos canales de atención para responder dudas sobre tasas, tarifas y condiciones de nuestros productos.</li>
+                <li>Ofrecemos asesoramiento personalizado para que nuestros clientes comprendan plenamente los términos de sus productos bancarios.</li>
+                <li>Mantenemos un sistema eficiente de recepción y resolución de quejas y sugerencias sobre la transparencia de la información financiera.</li>
+            </ul>
+
+            <h3>8. Cumplimiento Normativo y Mejora Continua</h3>
+            <ul class="policy-list">
+                <li>Nuestra política de transparencia cumple con todas las normativas establecidas por las entidades regulatorias del sector financiero.</li>
+                <li>Nos comprometemos a mejorar constantemente nuestras prácticas de comunicación y transparencia para fortalecer la confianza de nuestros clientes.</li>
+            </ul>
+            <p>Para más información, los clientes pueden visitar nuestras sucursales, acceder a nuestro sitio web o comunicarse con nuestro servicio de atención al cliente.</p>
+        </section>
+
+        
+        <section id="politica-sostenibilidad">
+            <h2>Política de Sostenibilidad</h2>
+             <h3>1. Introducción</h3>
+            <p>En Banco BanCloud, reconocemos la importancia de la sostenibilidad como un pilar fundamental en nuestra estrategia empresarial. Nos comprometemos a gestionar nuestras operaciones con responsabilidad social, ambiental y económica, promoviendo el desarrollo sostenible y generando un impacto positivo en la sociedad.</p>
+
+            <h3>2. Compromiso con la Responsabilidad Ambiental</h3>
+            <ul class="policy-list">
+                <li>Implementamos políticas para reducir nuestra huella de carbono, optimizando el consumo de energía y promoviendo el uso de energías renovables en nuestras operaciones.</li>
+                <li>Fomentamos el uso eficiente de los recursos, incluyendo la reducción de papel mediante la digitalización de documentos y procesos.</li>
+                <li>Apoyamos iniciativas de conservación ambiental y financiamiento de proyectos que contribuyan a la sostenibilidad ecológica.</li>
+                <li>Adoptamos medidas para la gestión responsable de residuos y el reciclaje en nuestras instalaciones.</li>
+            </ul>
+
+            <h3>3. Finanzas Sostenibles</h3>
+            <ul class="policy-list">
+                <li>Desarrollamos productos y servicios financieros responsables, priorizando inversiones y préstamos dirigidos a proyectos con impacto ambiental y social positivo.</li>
+                <li>Evaluamos los riesgos ambientales y sociales en nuestras decisiones de financiamiento, asegurando el cumplimiento de criterios de sostenibilidad.</li>
+                <li>Promovemos líneas de crédito y financiamiento verde para empresas y emprendedores que buscan mitigar el impacto ambiental.</li>
+            </ul>
+
+            <h3>4. Responsabilidad Social Empresarial (RSE)</h3>
+            <ul class="policy-list">
+                <li>Apoyamos programas de educación financiera para fomentar una cultura de ahorro y responsabilidad económica en la sociedad.</li>
+                <li>Contribuimos al desarrollo de comunidades a través de iniciativas de inclusión financiera, facilitando el acceso a servicios bancarios a sectores vulnerables.</li>
+                <li>Promovemos el respeto a los derechos humanos y condiciones laborales justas en nuestra organización y en nuestra cadena de proveedores.</li>
+                <li>Impulsamos la diversidad e igualdad de oportunidades dentro de nuestra empresa, garantizando un ambiente laboral inclusivo y equitativo.</li>
+            </ul>
+
+            <h3>5. Gobernanza y Transparencia en Sostenibilidad</h3>
+            <ul class="policy-list">
+                <li>Garantizamos la incorporación de criterios de sostenibilidad en nuestras estrategias corporativas y en la toma de decisiones.</li>
+                <li>Publicamos informes periódicos sobre nuestro desempeño en sostenibilidad, alineados con estándares internacionales de responsabilidad empresarial.</li>
+                <li>Implementamos políticas de ética y anticorrupción para asegurar la integridad en nuestras operaciones y relaciones comerciales.</li>
+                <li>Fomentamos la participación de nuestros clientes, empleados y comunidades en nuestras iniciativas sostenibles.</li>
+            </ul>
+
+             <h3>6. Innovación y Mejora Continua</h3>
+             <ul class="policy-list">
+                <li>Buscamos constantemente nuevas tecnologías y prácticas que contribuyan a mejorar la sostenibilidad de nuestras operaciones.</li>
+                <li>Fomentamos la investigación y desarrollo de soluciones financieras sostenibles que impulsen un crecimiento económico responsable.</li>
+                <li>Nos comprometemos a revisar y actualizar nuestras políticas de sostenibilidad periódicamente para adaptarnos a los desafíos globales y locales.</li>
+             </ul>
+             <p>Para más información sobre nuestras iniciativas de sostenibilidad, los clientes pueden visitar nuestra página web, acudir a nuestras sucursales o comunicarse con nuestro servicio de atención al cliente.</p>
+        </section>
+
+        
+        <section id="politica-servicio-cliente">
+            <h2>Políticas de Servicio al Cliente</h2>
+            <h3>Introducción</h3>
+            <p>El servicio al cliente es uno de los pilares fundamentales para el éxito de Banco BankCloud, ya que una atención eficiente y de calidad no solo fortalece la relación con los clientes, sino que también mejora la reputación y competitividad de la entidad. Banco BankCloud se compromete a brindar una experiencia de servicio excepcional basada en políticas claras y bien estructuradas.</p>
+
+            <h3>1. Respuesta rápida y efectiva a quejas y consultas</h3>
+            <p>Uno de los pilares de un buen servicio al cliente es la capacidad de responder a inquietudes, quejas y solicitudes de manera rápida y eficiente. La demora en la atención puede generar frustración y afectar la percepción de Banco BankCloud como una institución confiable y comprometida con sus clientes.</p>
+            <p><strong>Estrategias para una respuesta rápida y efectiva:</strong></p>
+            <ul class="policy-list">
+                <li><strong>Tiempos máximos de respuesta:</strong> Banco BankCloud establece tiempos límite según el canal de comunicación (ejemplo: respuestas en redes sociales en menos de 24 horas, correos electrónicos en 48 horas y llamadas atendidas en el momento).</li>
+                <li><strong>Capacitación del personal:</strong> Se asegura que los empleados de Banco BankCloud estén bien informados sobre los productos y servicios, y cuenten con habilidades en resolución de problemas y atención al cliente.</li>
+                <li><strong>Uso de herramientas tecnológicas:</strong> Se implementan sistemas de gestión de clientes (CRM) que permiten registrar, dar seguimiento y responder rápidamente a consultas y quejas.</li>
+                <li><strong>Protocolos de solución de problemas:</strong> Se diseñan guías y respuestas estándar para consultas frecuentes, además de escalonar los casos complejos a supervisores o especialistas.</li>
+                <li><strong>Evaluación del proceso:</strong> Banco BankCloud monitorea continuamente los tiempos y la calidad de las respuestas mediante encuestas o auditorías internas.</li>
+            </ul>
+
+            <h3>2. Implementación de encuestas de satisfacción</h3>
+            <p>Para mejorar la calidad del servicio, es esencial conocer la opinión de los clientes. Banco BankCloud utiliza encuestas de satisfacción para identificar áreas de mejora y ajustar estrategias que optimicen la experiencia del usuario.</p>
+            <p><strong>Beneficios de las encuestas de satisfacción:</strong></p>
+            <ul class="policy-list">
+                <li>Permiten medir la percepción del cliente sobre la atención recibida en Banco BankCloud.</li>
+                <li>Ayudan a identificar problemas en el servicio antes de que se conviertan en crisis.</li>
+                <li>Brindan información clave para mejorar productos, procesos y la experiencia del cliente.</li>
+                <li>Aumentan la lealtad del cliente al hacerlo sentir escuchado y valorado por Banco BankCloud.</li>
+            </ul>
+
+            <h3>3. Servicio multicanal</h3>
+            <p>Hoy en día, los clientes esperan tener múltiples opciones para comunicarse con una institución financiera. Banco BankCloud ofrece un servicio multicanal para garantizar que sus clientes puedan elegir la vía que más les convenga, ya sea presencial, telefónica o digital.</p>
+            <p><strong>Ventajas de un servicio multicanal:</strong></p>
+            <ul class="policy-list">
+                <li>Mayor accesibilidad y comodidad para los clientes de Banco BankCloud.</li>
+                <li>Reducción de tiempos de espera al distribuir la carga de trabajo entre varios canales.</li>
+                <li>Posibilidad de atender a clientes en diferentes ubicaciones y horarios.</li>
+                <li>Mejora en la experiencia del cliente al ofrecer opciones según sus preferencias.</li>
+            </ul>
+             <p><strong>Principales canales de atención:</strong></p>
+             <ul class="policy-list">
+                <li><strong>Atención presencial:</strong> Diseñada para clientes que prefieren el contacto directo y requieren una experiencia personalizada. Banco BankCloud cuenta con sucursales y oficinas de atención para brindar un servicio de calidad.</li>
+                <li><strong>Atención telefónica:</strong> Un canal rápido y eficaz para resolver dudas sin que el cliente tenga que desplazarse. Banco BankCloud dispone de un centro de llamadas con agentes capacitados y sistemas de gestión eficiente.</li>
+                <li><strong>Atención en línea:</strong> A través de chat en vivo, correos electrónicos, redes sociales y plataformas de mensajería como WhatsApp, Banco BankCloud garantiza una comunicación inmediata y accesible.</li>
+             </ul>
+
+             <h3>4. Implementación de un servicio multicanal eficiente</h3>
+             <ul class="policy-list">
+                <li><strong>Integración de canales:</strong> Banco BankCloud centraliza todas las interacciones con clientes en un sistema CRM para un servicio más eficiente.</li>
+                <li><strong>Chatbots y asistentes virtuales:</strong> Para responder preguntas frecuentes y canalizar casos más complejos a agentes humanos.</li>
+                <li><strong>Personalización del servicio:</strong> Adaptar la atención según el canal y las necesidades del cliente, brindando respuestas rápidas en redes sociales y asistencia detallada en llamadas telefónicas.</li>
+                <li><strong>Disponibilidad 24/7:</strong> Banco BankCloud busca estar disponible para sus clientes fuera del horario comercial mediante canales automatizados o agentes en línea.</li>
+             </ul>
+             <p>Estas políticas permiten que Banco BankCloud mantenga un alto nivel de servicio y satisfacción entre sus clientes, fortaleciendo su reputación y posicionamiento en el mercado.</p>
+        </section>
+
+        
+        <section id="politica-seguridad">
+            <h2>Políticas de Seguridad</h2>
+            <p>Las políticas de seguridad son fundamentales para garantizar la protección de datos personales y financieros de los clientes, así como para prevenir delitos financieros como el lavado de dinero y el financiamiento del terrorismo. A continuación se describen algunas políticas y medidas clave en estas áreas:</p>
+
+            <h3>1. Protección de Datos Personales y Financieros</h3>
+            <ul class="policy-list">
+                <li><strong>Recopilación y Almacenamiento Seguro:</strong> Implementar protocolos para la recopilación, almacenamiento y manejo de datos personales y financieros, asegurando que se utilicen métodos de cifrado y que se limiten los accesos no autorizados.</li>
+                <li><strong>Política de Privacidad:</strong> Desarrollar y comunicar una clara política de privacidad a los clientes, informándoles sobre cómo se utilizan sus datos, quiénes tienen acceso a ellos y los derechos que les asisten.</li>
+                <li><strong>Capacitación del Personal:</strong> Capacitar a los empleados sobre la importancia de la protección de datos y las mejores prácticas para el manejo seguro de la información sensible.</li>
+            </ul>
+
+            <h3>2. Medidas contra el Lavado de Dinero y el Financiamiento del Terrorismo</h3>
+             <ul class="policy-list">
+                <li><strong>Debida Diligencia del Cliente:</strong> Implementar procedimientos de identificación y verificación de clientes (KYC, por sus siglas en inglés) para evaluar el riesgo de lavado de dinero y financiar actividades terroristas.</li>
+                <li><strong>Monitoreo de Transacciones:</strong> Establecer sistemas de monitoreo para detectar y reportar actividades sospechosas a las autoridades pertinentes, así como para analizar patrones de transacciones inusuales.</li>
+                <li><strong>Capacitación Continua:</strong> Ofrecer formación regular sobre las leyes y regulaciones relacionadas con el lavado de dinero y el financiamiento del terrorismo, así como sobre la detección de señales de alerta.</li>
+             </ul>
+
+            <h3>3. Protocolos de Autenticación</h3>
+            <ul class="policy-list">
+                <li><strong>Contraseñas Seguras:</strong> Requerir el uso de contraseñas fuertes y complejas que incluyan una combinación de letras, números y caracteres especiales. Promover el cambio periódico de contraseñas.</li>
+                <li><strong>Métodos Biométricos:</strong> Implementar el uso de autenticación biométrica como huellas dactilares o reconocimiento facial para mejorar la seguridad en el acceso a cuentas y transacciones.</li>
+                <li><strong>Verificación en Dos Pasos:</strong> Establecer un sistema de autenticación de dos factores (2FA) donde se requiera un segundo paso de verificación, como un código enviado por SMS o correo electrónico, además de la contraseña.</li>
+            </ul>
+
+            <h3>4. Auditorías y Evaluaciones de Riesgo</h3>
+            <ul class="policy-list">
+                <li><strong>Auditorías Regulares:</strong> Realizar auditorías internas y externas de las políticas y procedimientos de seguridad para asegurar su efectividad y cumplimiento con las normativas aplicables.</li>
+                <li><strong>Evaluaciones de Riesgo:</strong> Implementar un proceso continuo de evaluación de riesgos que identifique, analice y evalúe los riesgos asociados con la protección de datos y la posibilidad de lavado de dinero. Esta evaluación debe considerar tanto los aspectos internos como externos.</li>
+            </ul>
+
+            <h3>5. Respuesta a Incidentes</h3>
+             <ul class="policy-list">
+                <li><strong>Plan de Respuesta a Incidentes:</strong> Desarrollar y mantener un plan claro de respuesta a incidentes que describa los pasos a seguir en caso de una violación de datos o actividad sospechosa. Este plan debe incluir la identificación del incidente, la contención, la erradicación, la recuperación y la comunicación a las partes interesadas.</li>
+                <li><strong>Notificación a Clientes y Autoridades:</strong> Establecer protocolos para notificar a los clientes y a las autoridades pertinentes en caso de una brecha de seguridad que comprometa sus datos.</li>
+             </ul>
+
+            <h3>6. Transparencia y Comunicación</h3>
+             <ul class="policy-list">
+                <li><strong>Comunicación con los Clientes:</strong> Informar a los clientes sobre las políticas de seguridad y la importancia de mantener la confidencialidad de sus datos. Proporcionar canales seguros y accesibles para que puedan reportar problemas o sospechas relacionadas con su información personal.</li>
+                <li><strong>Transparencia en la Gestión de Datos:</strong> Asegurar que los procesos relacionados con la recopilación y uso de datos se realicen de manera transparente, permitiendo a los clientes conocer cómo y por qué se utilizan sus datos.</li>
+             </ul>
+
+            <h3>7. Colaboración con Autoridades</h3>
+             <ul class="policy-list">
+                <li><strong>Cooperación con Entidades Reguladoras:</strong> Mantener una comunicación activa y cooperativa con las autoridades financieras y reguladoras para asegurar el cumplimiento de las normas legales y para recibir orientación sobre mejores prácticas en la gestión de riesgos.</li>
+                <li><strong>Participación en Iniciativas de la Industria:</strong> Involucrarse en iniciativas de colaboración entre sectores que aborden problemas comunes en la seguridad de datos y la prevención de delitos financieros, compartiendo información sobre tendencias y amenazas emergentes.</li>
+             </ul>
+
+             <h3>8. Tecnología y Herramientas de Seguridad</h3>
+             <ul class="policy-list">
+                <li><strong>Implementación de Tecnología Avanzada:</strong> Utilizar herramientas de seguridad cibernética avanzadas como firewalls, software antivirus, sistemas de detección de intrusiones y soluciones de cifrado para proteger la infraestructura tecnológica.</li>
+                <li><strong>Actualizaciones y Mantenimiento:</strong> Asegurar que todos los sistemas y software se mantengan actualizados con los últimos parches de seguridad para reducir vulnerabilidades.</li>
+             </ul>
+
+             <h3>9. Cultura de Seguridad</h3>
+             <ul class="policy-list">
+                <li><strong>Fomentar una Cultura de Seguridad:</strong> Promover una cultura organizacional en la que todos los empleados se sientan responsables de la seguridad de los datos y comprendan su papel en la protección de la información.</li>
+                <li><strong>Feedback y Mejora Continua:</strong> Establecer mecanismos para recibir feedback de los empleados sobre las políticas de seguridad y adaptar las prácticas a las necesidades cambiantes del entorno.</li>
+             </ul>
+             <p>En un entorno digital en constante evolución, las políticas de seguridad deben ser dinámicas y adaptarse a nuevas amenazas y tecnología. Implementar una combinación de políticas preventivas, tecnologías avanzadas y capacitación del personal es esencial para proteger los datos personales y financieros de los clientes y prevenir delitos como el lavado de dinero. La comunicación transparente y la colaboración con autoridades son igualmente clave para fomentar un entorno seguro para todas las partes involucradas.</p>
+        </section>
+
+        
+        <section id="politica-credito-riesgo">
+             <h2>Políticas de Crédito y Riesgo</h2>
+             <h3>Introducción</h3>
+             <p>En BankCloud, nuestro compromiso con la solidez financiera, la responsabilidad crediticia y la sostenibilidad a largo plazo se refleja en la implementación de políticas estrictas de crédito y gestión de riesgos. Estas políticas están diseñadas para proteger a la entidad, a nuestros clientes y a nuestros inversionistas, garantizando decisiones financieras informadas y equilibradas.</p>
+
+             <h3>1. Evaluación Rigurosa para la Aprobación de Créditos</h3>
+             <p>Antes de otorgar cualquier producto financiero (préstamos personales, comerciales, hipotecarios o líneas de crédito), BankCloud realiza un proceso de evaluación riguroso que incluye:</p>
+             <ul class="policy-list">
+                <li>Revisión del historial crediticio en centrales de riesgo autorizadas.</li>
+                <li>Análisis de ingresos, egresos y comportamiento financiero del solicitante.</li>
+                <li>Validación de documentos de identidad, comprobantes de ingresos y referencias bancarias.</li>
+                <li>Evaluación de garantías o colaterales, cuando aplique.</li>
+                <li>Scoring interno automatizado, basado en inteligencia artificial, para análisis predictivo de riesgo.</li>
+             </ul>
+             <p>Solo serán aprobados aquellos créditos cuya probabilidad de incumplimiento sea considerada aceptable según los parámetros establecidos por el Comité de Riesgo de BankCloud.</p>
+
+             <h3>2. Límites de Crédito Basados en Capacidad de Pago</h3>
+             <p>Los montos aprobados estarán directamente relacionados con la capacidad de pago del solicitante, considerando:</p>
+             <ul class="policy-list">
+                <li>Relación deuda-ingreso (RDI) máxima del 40% para personas naturales y 50% para empresas.</li>
+                <li>Flujos de caja esperados en el caso de personas jurídicas.</li>
+                <li>Historial de cumplimiento de obligaciones previas.</li>
+                <li>Nivel de apalancamiento y liquidez disponible.</li>
+             </ul>
+             <p>Los límites serán revisados y ajustados periódicamente, en función del comportamiento crediticio del cliente y cambios en el entorno económico.</p>
+
+             <h3>3. Prevención del Riesgo Financiero</h3>
+             <p>BankCloud implementa un enfoque preventivo para la gestión del riesgo financiero a través de:</p>
+             <ul class="policy-list">
+                <li>Monitoreo continuo de la cartera de crédito y generación de alertas tempranas.</li>
+                <li>Segmentación de clientes según niveles de riesgo.</li>
+                <li>Modelos de stress testing y simulación de escenarios adversos.</li>
+                <li>Políticas de diversificación del riesgo para evitar concentración excesiva en sectores, regiones o tipos de crédito.</li>
+             </ul>
+             <p>Además, contamos con un Comité de Riesgos encargado de supervisar, revisar y actualizar estas políticas de forma periódica.</p>
+
+             <h3>4. Plan de Recuperación y Gestión de Cartera Morosa</h3>
+             <p>Ante eventuales casos de mora o incumplimiento, BankCloud aplica un plan estructurado de recuperación, que incluye:</p>
+             <ul class="policy-list">
+                <li>Contacto temprano con el cliente mediante canales digitales y atención personalizada.</li>
+                <li>Ofrecimiento de soluciones de refinanciamiento o reestructuración, según evaluación del caso.</li>
+                <li>Externalización de la cobranza en etapas avanzadas del proceso, bajo estrictos lineamientos éticos.</li>
+                <li>Ejecución de garantías, como último recurso, conforme a la normativa vigente.</li>
+             </ul>
+             <p>El objetivo es maximizar la recuperación de activos minimizando el impacto reputacional y financiero.</p>
+
+             <h3>5. Cumplimiento Normativo y Actualización de Políticas</h3>
+             <p>BankCloud asegura el cumplimiento de todas las normativas vigentes en materia de crédito, protección al consumidor y prevención de lavado de activos. Nuestras políticas son revisadas al menos una vez al año, o cuando las condiciones del mercado lo requieran, para garantizar su adecuación y efectividad.</p>
+        </section>
+
+    
+        <section id="politica-etica">
+            <h2>Políticas Éticas</h2>
+            <h3>Introducción</h3>
+            <p>Banco BanKCloud se compromete a operar con los más altos estándares de transparencia, equidad y ética en todas sus actividades. Nuestra política de transparencia bancaria está diseñada para garantizar que empleados y clientes sean tratados con justicia, respeto e igualdad, promoviendo un ambiente de confianza y responsabilidad.</p>
+
+            <h3>Compromiso con la igualdad y la no discriminación</h3>
+            <p>Banco BanKCloud adopta una política de igualdad de trato para empleados y clientes, basada en los siguientes principios:</p>
+            <ul class="policy-list">
+                <li>No discriminación por razones de raza, género, religión, discapacidad, orientación sexual, nacionalidad u otros factores protegidos por la ley.</li>
+                <li>Fomento de un ambiente inclusivo y diverso dentro de la institución.</li>
+                <li>Igualdad de oportunidades en la selección, promoción y desarrollo de empleados.</li>
+                <li>Acceso equitativo a productos y servicios financieros para todos los clientes.</li>
+            </ul>
+
+            <h3>Prevención de conflictos de interés</h3>
+            <p>Para evitar cualquier conflicto de interés que pueda afectar la objetividad y la integridad del banco, se establecen las siguientes normas:</p>
+            <ul class="policy-list">
+                <li>Prohibición de relaciones comerciales que generen beneficios personales a expensas del banco o de sus clientes.</li>
+                <li>Requerimiento de divulgación inmediata de cualquier situación que pueda suponer un conflicto de interés.</li>
+                <li>Implementación de mecanismos para la revisión y supervisión de posibles conflictos de interés.</li>
+            </ul>
+
+            <h3>Transparencia en la información</h3>
+            <p>Banco BanKCloud se compromete a proporcionar información clara, precisa y accesible a sus clientes y empleados, garantizando:</p>
+            <ul class="policy-list">
+                <li>Condiciones de productos y servicios explicadas de manera sencilla y comprensible.</li>
+                <li>Transparencia en las tarifas, comisiones y costos asociados a los servicios bancarios.</li>
+                <li>Canales de atención efectivos para la resolución de dudas y consultas.</li>
+            </ul>
+
+            <h3>Cumplimiento y supervisión</h3>
+            <p>El cumplimiento de esta política será supervisado por los órganos internos de control del banco. Se fomentará una cultura de denuncia responsable para reportar cualquier incumplimiento de estas normas, asegurando la confidencialidad y protección de quienes informen sobre posibles irregularidades.</p>
+            <p>Banco BanKCloud reafirma su compromiso con la transparencia y la ética como pilares fundamentales de su operación y relación con clientes y empleados.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+             <div class="footer-top">
+                 <div class="footer-info">
+                     <img src="bankcloud big logo.png" alt="Logo BankCloud Footer" class="logo-img" id="footer-logo">
+                     <p class="footer-slogan">Creciendo contigo, conectados en la nube.</p>
+                 </div>
+                 <div class="footer-contact">
+                     <h4>Contacto</h4>
+                     <p><i class="fas fa-phone"></i> +1 (809) 555-1234</p>
+                     <p><i class="fas fa-envelope"></i> contacto@bankcloud.com</p>
+                     <p><i class="fas fa-map-marker-alt"></i> Torre Financiera BankCloud, Av. Winston Churchill #123, Santo Domingo, RD.</p>
+                 </div>
+                 <div class="footer-social">
+                     <h4>Síguenos</h4>
+                     <div class="social-links">
+                         <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                     </div>
+                     <a href="equipo.html" class="footer-button">Conoce Nuestro Equipo</a>
+                     <a href="documentos-legales.html" class="footer-button">Documentos Legales</a>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                <p>&copy; 2025 BankCloud. Todos los derechos reservados.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinksContainer = document.getElementById('nav-links-container');
+      const menuIconBars = mobileMenuButton.querySelector('.fa-bars');
+      const menuIconTimes = mobileMenuButton.querySelector('.fa-times');
+
+      if(menuIconTimes) menuIconTimes.style.display = 'none';
+
+      mobileMenuButton.addEventListener('click', () => {
+          const isActive = navLinksContainer.classList.toggle('active');
+           if (menuIconBars && menuIconTimes) {
+              menuIconBars.style.display = isActive ? 'none' : 'inline-block';
+              menuIconTimes.style.display = isActive ? 'inline-block' : 'none';
+           }
+          mobileMenuButton.setAttribute('aria-expanded', isActive);
+          mobileMenuButton.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      const navLinks = navLinksContainer.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+          link.addEventListener('click', () => { /* No accionare nada aquí */ });
+      });
+    </script>
+
+</body>
+</html>
